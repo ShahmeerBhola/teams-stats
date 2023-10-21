@@ -1,0 +1,22 @@
+.loader {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(70, 195, 238, 0.5);
+  /* animation-fill-mode: forwards; */
+}
+.loader h2 {
+  animation: fadeInAnimation ease 2s;
+  animation-iteration-count: infinite;
+}
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

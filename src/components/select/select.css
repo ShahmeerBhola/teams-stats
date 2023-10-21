@@ -1,0 +1,6 @@
+.select-wrapper {
+  width: 200px;
+}
+.select-wrapper .ant-select {
+  width: 100%;
+}
