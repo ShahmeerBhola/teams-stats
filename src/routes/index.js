@@ -1,5 +1,6 @@
 import { useRoutes } from "react-router-dom";
 import { Product, Selection, Stats, TimePeriodMatches } from "../pages";
+import ErrorPage from "../pages/error";
 export default function Routes() {
   return useRoutes([
     {
@@ -15,8 +16,12 @@ export default function Routes() {
       element: <Stats />,
     },
     {
-      path: "/time-period-matches",
+      path: "/tp-matches",
       element: <TimePeriodMatches />,
+    },
+    {
+      path: "*",
+      element: <ErrorPage />,
     },
   ]);
 }
