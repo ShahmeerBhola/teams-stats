@@ -1,0 +1,10 @@
+.ant-select {
+  height: 64px;
+  border-radius: 24px;
+}
+.ant-select .ant-select-selection-item {
+  color: white;
+  font-size: 24px;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+}
