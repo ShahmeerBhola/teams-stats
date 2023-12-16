@@ -8,7 +8,7 @@
   background: rgba(70, 195, 238, 0.5);
   /* animation-fill-mode: forwards; */
 }
-.loader h2 {
+.fade {
   animation: fadeInAnimation ease 2s;
   animation-iteration-count: infinite;
 }
