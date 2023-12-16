@@ -1,5 +1,17 @@
 const Wrapper = ({ children }) => {
-    return <div className="bg-gray-600 h-screen w-screen">{children}</div>;
+  const styles = {
+    backgroundImage: `url('/images/bg.jpg')`,
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
   };
-  export default Wrapper;
+  return (<>
+    <div className="h-screen w-screen m-0 fixed top-0 left-0" style={styles}>
+      {children}
+    </div>
   
+  
+  </>
+  );
+};
+export default Wrapper;

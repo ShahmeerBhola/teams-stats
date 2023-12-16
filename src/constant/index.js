@@ -53,3 +53,9 @@ export const FORMAT = [
   { label: "ODI", value: "odi" },
   { label: "Test", value: "test" },
 ];
+
+export const STATRELEVANCE = [  {
+  label: "By Time Period",
+  value: "timePerion",
+},
+{ label: "By Last Matches", value: "lastMatches" },]
