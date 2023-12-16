@@ -1,0 +1,25 @@
+.shape {
+  clip-path: polygon(54% 0, 100% 69%, 22% 100%, 0 100%, 0% 75%, 0 0);
+  height: calc(100vh + 18px);
+  width: 600px;
+  background: white;
+  display: inline-block;
+  position: relative;
+  left: -2px;
+}
+
+.child {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  clip-path: polygon(54% 0, 100% 69%, 22% 100%, 0 100%, 0% 75%, 0 0);
+  height: calc(100vh + 14px);
+  width: 596px;
+  background: rgb(241, 17, 202);
+  background: linear-gradient(
+    90deg,
+    rgba(241, 17, 202, 1) 0%,
+    rgba(117, 5, 197, 1) 64%,
+    rgba(105, 7, 185, 1) 100%
+  );
+}

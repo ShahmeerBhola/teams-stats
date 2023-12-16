@@ -1,6 +1,8 @@
 import { useRoutes } from "react-router-dom";
 import { Product, Selection, Stats, TimePeriodMatches } from "../pages";
 import ErrorPage from "../pages/error";
+import ViewTeam from "../pages/viewTeam";
+import TeamComparison from "../pages/teamComparision";
 export default function Routes() {
   return useRoutes([
     {
@@ -18,6 +20,14 @@ export default function Routes() {
     {
       path: "/tp-matches",
       element: <TimePeriodMatches />,
+    },
+    {
+      path: "/view-team",
+      element: <ViewTeam />,
+    },
+    {
+      path: "/comparison",
+      element: <TeamComparison />,
     },
     {
       path: "*",

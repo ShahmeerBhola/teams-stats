@@ -1,0 +1,37 @@
+/* Define the initial state of the div */
+.animate {
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+/* Define the animation */
+@keyframes slideInFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply the animation to the div and set final state as default */
+.animate {
+  animation: slideInFromBottom 1s ease-out;
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Define the arrow using the ::after pseudo-element */
+/* .myDiv::after {
+  content: "";
+  position: absolute;
+  top: 100%; 
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 10px;
+  border-style: solid;
+  border-color: rgb(147 51 234 ) transparent transparent transparent;
+} */
+
+
