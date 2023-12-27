@@ -8,10 +8,6 @@ const mainBgStyle = {
   backgroundSize: "cover",
 };
 const Product = () => {
-  const [isLoader, setIsLoader] = useState(false);
-  if (isLoader) {
-    return <Loader text={"initial loading initial loading "} />;
-  }
   return (
     <div style={mainBgStyle} className="h-screen w-screen overflow-hidden">
       <div className="shape ">
@@ -23,7 +19,7 @@ const Product = () => {
             <p className="pb-3">Best 11 team</p>
             <p>Selector</p>
           </div>
-          <pre className="font-medium text-lg pt-10" >
+          <pre className="font-medium text-lg pt-10">
             "Crafting Victories, One Data-Driven <br /> Selection at a Time:
             Your Winning XI <br /> Unveiled!"
           </pre>
