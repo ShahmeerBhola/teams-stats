@@ -1,10 +1,10 @@
 export const positionStyle = [
-  {
-    role: "wicketKeeper",
-    style: "top-[210px] left-[530px]",
-    top: 210,
-    left: 530,
-  },
+  // {
+  //   role: "wicketKeeper",
+  //   style: "top-[210px] left-[530px]",
+  //   top: 210,
+  //   left: 530,
+  // },
   {
     role: "",
     style: "top-[35px] left-[530px]",

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import PlayerStatsCard from "./PlayerStatsCard";
 import { positionStyle } from "../../constant/viewTeamStyle";
 
-const PlayerTile = ({ imgSrc, style, top, left, name }) => {
+const PlayerTile = ({ imgSrc, style, top, left, name , playerole}) => {
   const [isHovered, setIsHovered] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [screenHeight, setScreenHeight] = useState(window.innerHeight);
@@ -40,9 +40,9 @@ const PlayerTile = ({ imgSrc, style, top, left, name }) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div>
+      <div className={`absolute top-[${+top}px] left-[${+left}px] flex  flex-col items-center `} >
         <div
-          className={`myDiv bg-white rounded-full p-2 w-16 text-center animate absolute top-[${+top}px] left-[${+left}px]`}
+          className={`myDiv bg-white rounded-full p-2 w-16 text-center animate `}
         >
           <img
             src={imgSrc ?? "/images/babar.webp"}
@@ -51,8 +51,7 @@ const PlayerTile = ({ imgSrc, style, top, left, name }) => {
           />
         </div>
         <div
-          className={`bg-[#E1486D] px-4 py-2 text-center absolute 
-           left-[${+left}px] top-[${+top}px] mt-[70px] mr-2  animate  rounded-3xl text-white`}
+          className={`bg-[#E1486D] px-4 py-2 text-center  mt-[70px] mr-2  animate  rounded-3xl text-white absolute`}
         >
           {name?.split(" ")[0] ?? `Babar`}
         </div>
@@ -65,7 +64,7 @@ const PlayerTile = ({ imgSrc, style, top, left, name }) => {
             left: `${position.x}px`,
           }}
         >
-          <PlayerStatsCard />
+          <PlayerStatsCard name={name} playrole={playerole} imgSrc={imgSrc} />
         </div>
       )}
     </div>
@@ -95,6 +94,7 @@ const PlayerTileParent = ({ team }) => {
             key={key}
             imgSrc={team?.[key]?.img_url}
             name={team?.[key]?.player}
+            playrole={team?.[key]?.playrole}
           />
         ) : null
       )}
@@ -105,6 +105,7 @@ const PlayerTileParent = ({ team }) => {
           key={key + keeperStyle.top}
           imgSrc={item.img_url}
           name={item.player}
+          playrole={team?.[key]?.playrole}
         />
       ))}
     </>

@@ -6,7 +6,7 @@ const initialState = {
   },
 };
 
-const teamReducer = (state = initialState, action) => {
+const teamReducer = (state = {}, action) => {
 
   switch (action.type) {
     case "SET_TEAM_INFO":

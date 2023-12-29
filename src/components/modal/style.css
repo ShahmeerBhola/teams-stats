@@ -1,0 +1,15 @@
+.ant-modal-content {
+  background-color: #e1486d !important;
+}
+
+.ant-modal-title {
+  background-color: #e1486d !important;
+  /* background-color: #35336e !important; */
+  color: white !important;
+  font-size: x-large !important;
+  font-weight: 700 !important;
+}
+
+span.anticon.anticon-close.ant-modal-close-icon {
+  color: white;
+}

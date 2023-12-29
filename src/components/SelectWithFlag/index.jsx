@@ -1,10 +1,13 @@
 import { Select } from "antd";
 import "./style.css";
 import { useRef, useState } from "react";
-const CustomOption = ({ label, value, disabled, ...restProps }) => {
+const CustomOption = ({ label, value, disabled, imgSrc, ...restProps }) => {
+  console.log({ imgSrc });
+  console.log({ label });
+  console.log(restProps.data);
   return (
     <div className="flex gap-4 items-center">
-      <img className="h-10 w-10" src="/images/pak2.png" alt="" />
+      <img className="h-10 w-10" src={restProps.data.imgSrc} alt="" />
       <div>{label}</div>
     </div>
   );
@@ -53,14 +56,16 @@ const FlagSelect = ({}) => {
             {
               value: "jack",
               label: "Jack",
+              imgSrc: "/images/pak2.png",
             },
             {
               value: "lucy",
               label: "Lucy",
+              imgSrc: "/images/aus.png",
             },
             {
               value: "Yiminghe",
-              label: "yiminghe",
+              imgSrc: "/images/pak2.png",
             },
           ]}
           optionRender={CustomOption}
