@@ -12,12 +12,15 @@ const AllPlayer = () => {
     </div>
   );
 };
-const SinglePlayerTile = () => {
+
+const using = ["/images/batsman2.png", "/images/allrounder.png", "/images/baller.png"];
+const SinglePlayerTile = ({ player, icon }) => {
   return (
     <div className="flex h-[55px] bg-white rounded-3xl items-center m-2 ">
       <img src="/images/babar.webp" alt="" className="h-10 w-10 p-1 ml-4" />
-      <p className="text-lg font-bold  tracking-[.25em] uppercase mx-auto">
-        Babar | Batsman
+      <p className="text-lg font-bold  tracking-[.25em] uppercase mx-auto flex items-center">
+        Babar Azam
+        <img src="/images/baller.png" alt="" className="h-4 w-4 ml-2" />
       </p>
     </div>
   );
