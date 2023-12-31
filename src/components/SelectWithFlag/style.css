@@ -3,8 +3,18 @@
   border-radius: 24px;
 }
 .ant-select .ant-select-selection-item {
-  color: white;
   font-size: 24px;
   letter-spacing: 0.2em;
   font-weight: 700;
+}
+.customSelect {
+  width: 432px !important;
+  inset: 231px auto auto 635px !important;
+}
+.firstHeader {
+  inset: 90px auto auto 25px !important;
+}
+
+.lastHeader {
+  inset: 90px 15px auto auto !important;
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, Select } from "antd";
+import { Modal } from "antd";
 
 import "./style.css";
 import FlagSelect from "../SelectWithFlag";
@@ -19,7 +19,7 @@ const AnalysisModal = ({ open, setOpen, onSelectTeam }) => {
         }}
       >
         <div className="">
-          <FlagSelect />
+          <FlagSelect showModal="customSelect" />
         </div>
       </Modal>
     </>

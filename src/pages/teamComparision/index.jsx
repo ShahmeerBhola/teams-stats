@@ -1,19 +1,35 @@
-import { useNavigate } from "react-router-dom";
 import TeamHeader from "../../components/teamComparision/header";
 import TeamStat from "../../components/teamComparision/teamStat";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
-const TeamComparison = () => {
-  const navigate = useNavigate();
+import { useEffect, useState } from "react";
+const TeamComparison = ({ setLoading }) => {
   const teamInfo = useSelector((state) => state.teamInfo);
+  const [format, setFormat] = useState("t20");
+  const [teamA, setTeamA] = useState("Pakistan");
+  const [teamB, setTeamB] = useState("Yiminghe");
+  const formatHandler = (val) => {
+    setFormat(val);
+  };
+  const teamAhandler = (val) => {
+    setTeamA(val);
+  };
+  const teamBhandler = (val) => {
+    setTeamB(setTeamB);
+  };
   useEffect(() => {
     console.log({ teamInfo });
   }, [teamInfo]);
   return (
     <div className="bg-[#35336E]  h-screen">
-      {/* upper body */}
       <div className="pt-4">
-        <TeamHeader />
+        <TeamHeader
+          formatValue={format}
+          formatHandler={formatHandler}
+          teamA={teamA}
+          teamAhandler={teamAhandler}
+          teamB={teamB}
+          teamBhandler={teamBhandler}
+        />
       </div>
 
       {/* lower body */}

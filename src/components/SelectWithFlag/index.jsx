@@ -1,20 +1,29 @@
 import { Select } from "antd";
 import "./style.css";
 import { useRef, useState } from "react";
-const CustomOption = ({ label, value, disabled, imgSrc, ...restProps }) => {
-  console.log({ imgSrc });
-  console.log({ label });
-  console.log(restProps.data);
-  return (
-    <div className="flex gap-4 items-center">
-      <img className="h-10 w-10" src={restProps.data.imgSrc} alt="" />
-      <div>{label}</div>
-    </div>
-  );
-};
-const FlagSelect = ({}) => {
+
+const flagOptions = [
+  {
+    value: "jack",
+    label: "Jack",
+    imgSrc: "/images/pak2.png",
+  },
+  {
+    value: "lucy",
+    label: "Lucy",
+    imgSrc: "/images/aus.png",
+  },
+  {
+    label: "yiminghe",
+    value: "Yiminghe",
+    imgSrc: "/images/pak2.png",
+  },
+];
+
+const FlagSelect = ({ showModal, bgColor, dValue, changeHandler }) => {
   const [visible, setVisible] = useState(false);
   const selectRef = useRef(null);
+  const [value, setValue] = useState(dValue ?? flagOptions[0]);
 
   const handleClick = () => {
     setVisible(!visible);
@@ -27,47 +36,61 @@ const FlagSelect = ({}) => {
   const handleSelectBlur = () => {
     setVisible(false);
   };
+  const CustomOption = ({ label, value, disabled, imgSrc, ...restProps }) => {
+    console.log({ imgSrc });
+    console.log({ label });
+    console.log(restProps.data);
+    return (
+      <div className="flex gap-4 items-center">
+        <img className="h-10 w-10" src={restProps.data.imgSrc} alt="" />
+        <div>{label}</div>
+      </div>
+    );
+  };
+  const onSelect = (val) => {
+    setValue(val);
+    changeHandler(val);
+  };
+  console.log(value, "value");
   return (
     <div
-      className="flex bg-purple rounded-3xl px-7 justify-between cursor-pointer "
+      className={`flex  rounded-3xl px-7 justify-between cursor-pointer ${
+        bgColor ? "bg-white" : "bg-purple"
+      }
+`}
       onClick={handleClick}
     >
       <div>
-        <img src="/images/pak2.png" alt="" className="h-16 w-20" />
+        <img
+          src={
+            flagOptions.find((item) => item.value === value)?.imgSrc ??
+            flagOptions[0].imgSrc
+          }
+          alt=""
+          className="h-16 w-20"
+        />
       </div>
       <div>
         <Select
+          popupClassName={showModal}
           ref={selectRef}
           open={visible}
           onBlur={handleSelectBlur}
-          defaultValue="Pakistan"
+          defaultValue={value}
           style={{
             width: 220,
             border: "none",
-            background: "#35336E",
+            background: `${bgColor ? "#fff" : "#35336E"}`,
+            color: `${bgColor ? "#000" : "#fff"}`,
           }}
           dropdownStyle={{
             width: 370,
             textTransform: "uppercase",
           }}
+          value={value}
           bordered={false}
-          onChange={(val) => console.log(val)}
-          options={[
-            {
-              value: "jack",
-              label: "Jack",
-              imgSrc: "/images/pak2.png",
-            },
-            {
-              value: "lucy",
-              label: "Lucy",
-              imgSrc: "/images/aus.png",
-            },
-            {
-              value: "Yiminghe",
-              imgSrc: "/images/pak2.png",
-            },
-          ]}
+          onChange={(val) => onSelect(val)}
+          options={flagOptions}
           optionRender={CustomOption}
         />
       </div>

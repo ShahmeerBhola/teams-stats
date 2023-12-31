@@ -1,30 +1,40 @@
-const FlagDropDown = () => {
-  // w or h dena
-  return (
-    <div className="bg-white flex items-center rounded-3xl m-4 gap-2 py-2 w-96 justify-center">
-      <img src="/images/pak2.png" alt="" className="h-10 w-10 ml-5" />
-      <p className="uppercase tracking-[.35em] font-semibold text-3xl">
-        Pakistan
-      </p>
-    </div>
-  );
-};
+import FlagSelect from "../SelectWithFlag";
+import FormatDropdown from "./FormatDrorpdown";
 
-const DisplayFormat = ({ format }) => {
-  return <div className="bg-pink h-[50px] text-white text-center py-2 uppercase tracking-[.25em] font-semibold text-3xl w-56 rounded-3xl mx-auto">{format || "T20"}</div>;
-};
-
-const TeamHeader = () => {
+const TeamHeader = ({
+  formatValue,
+  formatHandler,
+  teamA,
+  teamAhandler,
+  teamB,
+  teamBhandler,
+}) => {
   return (
     <div className="flex gap-5">
       <div className="flex-1">
-        <FlagDropDown />
+        <div className="w-3/4 p-2">
+          <FlagSelect
+            bgColor
+            showModal="firstHeader"
+            dValue={teamA}
+            changeHandler={teamAhandler}
+          />
+        </div>
       </div>
       <div className="flex-1">
-        <DisplayFormat />
+        <div className=" mx-auto">
+          <FormatDropdown value={formatValue} changeHandler={formatHandler} />
+        </div>
       </div>
-      <div className="flex-1">
-        <FlagDropDown />
+      <div className="flex-1 flex justify-end">
+        <div className="w-3/4 p-2 ">
+          <FlagSelect
+            bgColor
+            showModal="lastHeader"
+            dValue={teamB}
+            changeHandler={teamBhandler}
+          />
+        </div>
       </div>
     </div>
   );
