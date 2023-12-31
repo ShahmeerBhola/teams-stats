@@ -113,6 +113,12 @@ const ViewTeam = () => {
                 <div className="flex-1">
                   <StatShowTile />
                 </div>
+                <div className="flex-1">
+                  <StatShowTile />
+                </div>
+              </div>
+              <div className="w-1/2 mx-auto pt-7 ">
+                <StatShowTile />
               </div>
               <div className="w-1/2 mx-auto pt-7 ">
                 <StatShowTile />
