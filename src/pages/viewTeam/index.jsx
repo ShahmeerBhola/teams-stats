@@ -97,7 +97,7 @@ const ViewTeam = () => {
               />
             </div>
             <div className="relative left-[-45px]">
-              <div className="flex gap-4 pt-7 ">
+              <div className="flex gap-4 pt-7  w-[65%] mx-auto">
                 <div className="flex-1">
                   <StatShowTile />
                 </div>
@@ -117,11 +117,13 @@ const ViewTeam = () => {
                   <StatShowTile />
                 </div>
               </div>
-              <div className="w-1/2 mx-auto pt-7 ">
-                <StatShowTile />
-              </div>
-              <div className="w-1/2 mx-auto pt-7 ">
-                <StatShowTile />
+              <div className="flex gap-4 pt-7  w-[65%] mx-auto">
+                <div className="flex-1">
+                  <StatShowTile />
+                </div>
+                <div className="flex-1">
+                  <StatShowTile />
+                </div>
               </div>
             </div>
             <div className="flex gap-[50px] pt-10 relative left-2">
