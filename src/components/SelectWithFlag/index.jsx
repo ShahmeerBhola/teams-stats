@@ -55,7 +55,7 @@ const FlagSelect = ({ showModal, bgColor, dValue, changeHandler }) => {
           className="h-16 w-20"
         />
       </div>
-      <div>
+      <div className={bgColor ? "text-black" : "text-white"}>
         <Select
           popupClassName={showModal}
           ref={selectRef}
@@ -75,6 +75,7 @@ const FlagSelect = ({ showModal, bgColor, dValue, changeHandler }) => {
           value={value}
           bordered={false}
           onChange={(val) => onSelect(val)}
+          onSelect={(val) => onSelect(val)}
           options={TEAM}
           optionRender={CustomOption}
         />

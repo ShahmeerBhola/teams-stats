@@ -18,3 +18,10 @@
 .lastHeader {
   inset: 90px 15px auto auto !important;
 }
+
+.text-black .ant-select-selection-item {
+  color: black;
+}
+.text-white .ant-select-selection-item {
+  color: white;
+}
