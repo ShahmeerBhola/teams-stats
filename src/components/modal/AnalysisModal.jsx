@@ -19,7 +19,7 @@ const AnalysisModal = ({ open, setOpen, onSelectTeam }) => {
         }}
       >
         <div className="">
-          <FlagSelect showModal="customSelect" />
+          <FlagSelect showModal="customSelect" changeHandler={onSelectTeam} />
         </div>
       </Modal>
     </>

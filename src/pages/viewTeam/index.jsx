@@ -16,7 +16,7 @@ const ViewTeam = () => {
   const navigate = useNavigate();
   const [team, setTeam] = useState([]);
   const [teamName, setTeamName] = useState("Pakistan");
-  const [format, setFormat] = useState("T20");
+  const [format, setFormat] = useState("t20");
   const [lastMatches, setLastMatches] = useState("5");
   const [loading, setLoading] = useState(true);
   const [openModal, setOpenModal] = useState(false);
@@ -51,6 +51,10 @@ const ViewTeam = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const setTeamA = (val) => {
+    setTeamName(val);
+  };
   if (loading) {
     return <Loader />;
   } else {
@@ -72,24 +76,24 @@ const ViewTeam = () => {
           <div className="w-1/4 ">
             <div className="flex pt-6 gap-4 ">
               <div className="relative left-[-45px] w-full">
-                <FlagSelect />
+                <FlagSelect dValue={teamName} changeHandler={setTeamA} />
               </div>
             </div>
 
             <div className="flex pt-6 gap-10 relative left-[-45px] ">
               <FormatButton
-                active={format === "T20"}
-                onClick={() => setFormat("T20")}
+                active={format === "t20"}
+                onClick={() => setFormat("t20")}
               />
               <FormatButton
                 text="ODI"
-                active={format === "ODI"}
-                onClick={() => setFormat("ODI")}
+                active={format === "odi"}
+                onClick={() => setFormat("odi")}
               />
               <FormatButton
                 text="TEST"
-                active={format === "TEST"}
-                onClick={() => setFormat("TEST")}
+                active={format === "test"}
+                onClick={() => setFormat("test")}
               />
             </div>
             <div className="relative left-[-45px]">

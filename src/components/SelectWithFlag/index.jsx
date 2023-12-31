@@ -37,9 +37,9 @@ const FlagSelect = ({ showModal, bgColor, dValue, changeHandler }) => {
     setVisible(false);
   };
   const CustomOption = ({ label, value, disabled, imgSrc, ...restProps }) => {
-    console.log({ imgSrc });
-    console.log({ label });
-    console.log(restProps.data);
+    // console.log({ imgSrc });
+    // console.log({ label });
+    // console.log(restProps.data);
     return (
       <div className="flex gap-4 items-center">
         <img className="h-10 w-10" src={restProps.data.imgSrc} alt="" />
@@ -51,7 +51,6 @@ const FlagSelect = ({ showModal, bgColor, dValue, changeHandler }) => {
     setValue(val);
     changeHandler(val);
   };
-  console.log(value, "value");
   return (
     <div
       className={`flex  rounded-3xl px-7 justify-between cursor-pointer ${

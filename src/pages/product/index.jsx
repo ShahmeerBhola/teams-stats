@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Loader } from "../../components";
+import React from "react";
 import "./style.css";
+import { useNavigate } from "react-router-dom";
 const mainBgStyle = {
   backgroundImage: `url('/images/mainBG.webp')`,
   backgroundPosition: "center",
@@ -8,6 +8,7 @@ const mainBgStyle = {
   backgroundSize: "cover",
 };
 const Product = () => {
+  const navigate = useNavigate();
   return (
     <div style={mainBgStyle} className="h-screen w-screen overflow-hidden">
       <div className="shape ">
@@ -23,7 +24,10 @@ const Product = () => {
             "Crafting Victories, One Data-Driven <br /> Selection at a Time:
             Your Winning XI <br /> Unveiled!"
           </pre>
-          <div className="bg-pink text-lg font-semibold uppercase w-36 rounded-3xl h-16 pt-3.5 px-5 text-center mt-10">
+          <div
+            className="bg-pink text-lg font-semibold uppercase w-36 rounded-3xl h-16 pt-3.5 px-5 text-center mt-10 cursor-pointer"
+            onClick={()=>navigate("/view-team")}
+          >
             Generate
           </div>
         </div>
