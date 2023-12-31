@@ -42,17 +42,17 @@ const FlagSelect = ({ showModal, bgColor, dValue, changeHandler }) => {
     <div
       className={`flex  rounded-3xl px-7 justify-between cursor-pointer ${
         bgColor ? "bg-white" : "bg-purple"
-      }
+      }  items-center
 `}
       onClick={handleClick}
     >
-      <div>
+      <div className="h-16 w-40">
         <img
           src={
             TEAM.find((item) => item.value === value)?.imgSrc ?? TEAM[0].imgSrc
           }
           alt=""
-          className="h-16 w-20"
+          className="h-16 w-40  object-contain "
         />
       </div>
       <div className={bgColor ? "text-black" : "text-white"}>
