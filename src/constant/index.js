@@ -1,47 +1,58 @@
 export const TEAM = [
   {
     label: "Pakistan",
-    value: "pakistan",
+    value: "Pakistan",
+    imgSrc: "/images/pak2.png",
   },
   {
     label: "India",
-    value: "india",
+    value: "India",
+    imgSrc: "/images/india.png",
   },
   {
     label: "Australia",
-    value: "australia",
+    value: "Australia",
+    imgSrc: "/images/aus.png",
   },
   {
     label: "England",
-    value: "england",
+    value: "England",
+    imgSrc: "/images/england.png",
   },
   {
     label: "South Africa",
-    value: "south-africa",
+    value: "South Africa",
+    imgSrc: "/images/southAfrica.png",
   },
   {
     label: "West Indies",
-    value: "west-indies",
+    value: "West Indies",
+    imgSrc: "/images/westindies.png",
   },
   {
     label: "New Zealand",
-    value: "new-zealand",
+    value: "New Zealand",
+    imgSrc: "/images/newzealand.png",
   },
   {
     label: "Sri Lanka",
-    value: "sri-lanka",
+    value: "Sri Lanka",
+    imgSrc: "/images/sriLanka.png",
   },
   {
     label: "Bangladesh",
-    value: "bangladesh",
+    value: "Bangladesh",
+    imgSrc: "/images/bangladesh.png",
   },
   {
     label: "Afghanistan",
-    value: "afghanistan",
+    value: "Afghanistan",
+    imgSrc: "/images/afghanistan.png",
   },
   {
     label: "Zimbabwe",
-    value: "zimbabwe",
+    value: "Zimbabwe",
+    imgSrc: "/images/zimbabwe.png",
   },
 ];
 
@@ -54,8 +65,10 @@ export const FORMAT = [
   { label: "Test", value: "test" },
 ];
 
-export const STATRELEVANCE = [  {
-  label: "By Time Period",
-  value: "timePerion",
-},
-{ label: "By Last Matches", value: "lastMatches" },]
+export const STATRELEVANCE = [
+  {
+    label: "By Time Period",
+    value: "timePerion",
+  },
+  { label: "By Last Matches", value: "lastMatches" },
+];

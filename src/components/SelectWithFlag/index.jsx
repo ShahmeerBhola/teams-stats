@@ -1,29 +1,12 @@
 import { Select } from "antd";
 import "./style.css";
-import { useRef, useState } from "react";
-
-const flagOptions = [
-  {
-    value: "jack",
-    label: "Jack",
-    imgSrc: "/images/pak2.png",
-  },
-  {
-    value: "lucy",
-    label: "Lucy",
-    imgSrc: "/images/aus.png",
-  },
-  {
-    label: "yiminghe",
-    value: "Yiminghe",
-    imgSrc: "/images/pak2.png",
-  },
-];
+import { useEffect, useRef, useState } from "react";
+import { TEAM } from "../../constant";
 
 const FlagSelect = ({ showModal, bgColor, dValue, changeHandler }) => {
   const [visible, setVisible] = useState(false);
   const selectRef = useRef(null);
-  const [value, setValue] = useState(dValue ?? flagOptions[0]);
+  const [value, setValue] = useState(dValue ?? TEAM[0]);
 
   const handleClick = () => {
     setVisible(!visible);
@@ -32,7 +15,11 @@ const FlagSelect = ({ showModal, bgColor, dValue, changeHandler }) => {
       selectRef.current.focus();
     }
   };
-
+  useEffect(() => {
+    if (dValue) {
+      setValue(dValue);
+    }
+  }, [dValue]);
   const handleSelectBlur = () => {
     setVisible(false);
   };
@@ -62,8 +49,7 @@ const FlagSelect = ({ showModal, bgColor, dValue, changeHandler }) => {
       <div>
         <img
           src={
-            flagOptions.find((item) => item.value === value)?.imgSrc ??
-            flagOptions[0].imgSrc
+            TEAM.find((item) => item.value === value)?.imgSrc ?? TEAM[0].imgSrc
           }
           alt=""
           className="h-16 w-20"
@@ -89,7 +75,7 @@ const FlagSelect = ({ showModal, bgColor, dValue, changeHandler }) => {
           value={value}
           bordered={false}
           onChange={(val) => onSelect(val)}
-          options={flagOptions}
+          options={TEAM}
           optionRender={CustomOption}
         />
       </div>
