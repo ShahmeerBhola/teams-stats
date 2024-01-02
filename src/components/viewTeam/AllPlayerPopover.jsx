@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import PlayerStatsCard from "./PlayerStatsCard";
 import { positionStyle } from "../../constant/viewTeamStyle";
 
-const PlayerTile = ({ imgSrc, style, top, left, name , playerole}) => {
+const PlayerTile = ({ imgSrc, style, top, left, name, playrole, stats }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [screenHeight, setScreenHeight] = useState(window.innerHeight);
@@ -40,7 +40,9 @@ const PlayerTile = ({ imgSrc, style, top, left, name , playerole}) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className={`absolute top-[${+top}px] left-[${+left}px] flex  flex-col items-center `} >
+      <div
+        className={`absolute top-[${+top}px] left-[${+left}px] flex  flex-col items-center `}
+      >
         <div
           className={`myDiv bg-white rounded-full p-2 w-16 text-center animate `}
         >
@@ -64,7 +66,12 @@ const PlayerTile = ({ imgSrc, style, top, left, name , playerole}) => {
             left: `${position.x}px`,
           }}
         >
-          <PlayerStatsCard name={name} playrole={playerole} imgSrc={imgSrc} />
+          <PlayerStatsCard
+            name={name}
+            playrole={playrole}
+            imgSrc={imgSrc}
+            stats={stats}
+          />
         </div>
       )}
     </div>
@@ -75,9 +82,7 @@ const PlayerTileParent = ({ team }) => {
   const wicketkeeper = team.filter(
     (player) => player.playrole === "Wicketkeeper"
   );
-
   console.log({ wicketkeeper });
-
   const keeperStyle = {
     role: "wicketKeeper",
     style: "top-[210px] left-[530px]",
@@ -95,6 +100,7 @@ const PlayerTileParent = ({ team }) => {
             imgSrc={team?.[key]?.img_url}
             name={team?.[key]?.player}
             playrole={team?.[key]?.playrole}
+            stats={team?.[key]?.stats}
           />
         ) : null
       )}
@@ -105,7 +111,8 @@ const PlayerTileParent = ({ team }) => {
           key={key + keeperStyle.top}
           imgSrc={item.img_url}
           name={item.player}
-          playrole={team?.[key]?.playrole}
+          playrole={item?.playrole}
+          stats={team?.[key]?.stats}
         />
       ))}
     </>

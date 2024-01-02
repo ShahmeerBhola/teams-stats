@@ -3,7 +3,7 @@ import axios from "axios";
 function generateTeam(body) {
   return new Promise((resolve, reject) => {
     axios
-      .post("/player/teamStats", body)
+      .post("/player/current_team", body)
       .then((res) => {
         resolve(res);
       })
@@ -30,4 +30,4 @@ function opponentAnalysis(body) {
   });
 }
 
-export { generateTeam , opponentAnalysis };
+export { generateTeam, opponentAnalysis };

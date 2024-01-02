@@ -15,9 +15,10 @@ import { useDispatch } from "react-redux";
 const ViewTeam = () => {
   const navigate = useNavigate();
   const [team, setTeam] = useState([]);
+  const [teamStats, setTeamStats] = useState(null);
   const [teamName, setTeamName] = useState("Pakistan");
   const [format, setFormat] = useState("t20");
-  const [lastMatches, setLastMatches] = useState("5");
+  const [lastMatches, setLastMatches] = useState(10);
   const [loading, setLoading] = useState(true);
   const [openModal, setOpenModal] = useState(false);
   const dispatch = useDispatch();
@@ -30,8 +31,11 @@ const ViewTeam = () => {
 
   const fetchData = () => {
     setLoading(true);
-    generateTeam({ team: teamName, format, lastMatches })
+    generateTeam({ team: teamName, format, lastMatches, type: "balanced" })
       .then((res) => {
+        console.log(" >> ", res);
+        console.log(res?.data?.stats);
+        setTeamStats(res?.data?.stats);
         setTeam(res?.data?.team);
       })
       .catch((err) => {
@@ -99,30 +103,51 @@ const ViewTeam = () => {
             <div className="relative left-[-45px]">
               <div className="flex gap-4 pt-7  w-[65%] mx-auto">
                 <div className="flex-1">
-                  <StatShowTile />
+                  <StatShowTile
+                    title="Batting Avg"
+                    value={teamStats?.Batting_Average || null}
+                  />
                 </div>
                 <div className="flex-1">
-                  <StatShowTile />
+                  <StatShowTile
+                    title="Batting SR"
+                    value={teamStats?.Batting_Strikerate || null}
+                  />
                 </div>
               </div>
 
               <div className="flex gap-4 pt-7  ">
                 <div className="flex-1">
-                  <StatShowTile />
+                  <StatShowTile
+                    title="Batting Score"
+                    value={teamStats?.Batting_Score || null}
+                  />
                 </div>
                 <div className="flex-1">
-                  <StatShowTile />
+                  <StatShowTile
+                    title="Economy"
+                    value={teamStats?.Economy || null}
+                  />
                 </div>
                 <div className="flex-1">
-                  <StatShowTile />
+                  <StatShowTile
+                    title="Bowling Score"
+                    value={teamStats?.Bowling_Score || null}
+                  />
                 </div>
               </div>
               <div className="flex gap-4 pt-7  w-[65%] mx-auto">
                 <div className="flex-1">
-                  <StatShowTile />
+                  <StatShowTile
+                    title="Bowling SR"
+                    value={teamStats?.Batting_Strikerate || null}
+                  />
                 </div>
                 <div className="flex-1">
-                  <StatShowTile />
+                  <StatShowTile
+                    title="Bowling Avg"
+                    value={teamStats?.Bowling_Average || null}
+                  />
                 </div>
               </div>
             </div>
