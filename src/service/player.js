@@ -18,7 +18,7 @@ function generateTeam(body) {
 function opponentAnalysis(body) {
   return new Promise((resolve, reject) => {
     axios
-      .post("/player/opponent", body)
+      .post("/player/teamStats", body)
       .then((res) => {
         resolve(res);
       })

@@ -1,32 +1,47 @@
 import { Progress } from "antd";
 
-const AllPlayer = () => {
+const AllPlayer = ({ team }) => {
   return (
     <div
       className="
   bg-white bg-opacity-40 border-2 border-white"
     >
-      {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => (
-        <SinglePlayerTile />
+      {team?.map((item, key) => (
+        <SinglePlayerTile player={item} key={key} />
       ))}
     </div>
   );
 };
 
-const using = ["/images/batsman2.png", "/images/allrounder.png", "/images/baller.png"];
-const SinglePlayerTile = ({ player, icon }) => {
+const SinglePlayerTile = ({ player }) => {
   return (
     <div className="flex h-[55px] bg-white rounded-3xl items-center m-2 ">
-      <img src="/images/babar.webp" alt="" className="h-10 w-10 p-1 ml-4" />
+      <img
+        src={player?.img_url || "/images/babar.webp"}
+        alt=""
+        className="h-10 w-10 p-1 ml-4"
+      />
       <p className="text-lg font-bold  tracking-[.25em] uppercase mx-auto flex items-center">
-        Babar Azam
-        <img src="/images/baller.png" alt="" className="h-4 w-4 ml-2" />
+        {player?.player || " Babar Azam"}
+        <img
+          src={
+            player?.playrole === "Allrounder"
+              ? "/images/allrounder.png"
+              : player?.playrole === "Batter"
+              ? "/images/batsman2.png"
+              : "/images/baller.png"
+          }
+          alt=""
+          className="h-4 w-4 ml-2"
+        />
       </p>
     </div>
   );
 };
 
-const TeamStatViewer = () => {
+const TeamStatViewer = ({ stats }) => {
+  console.log("stats in team viewer");
+  console.log({ stats });
   return (
     <div className="bg-white h-[97%] my-3">
       <div className="flex gap-4 pt-4">
@@ -112,15 +127,15 @@ const TeamStatViewer = () => {
     </div>
   );
 };
-const TeamStat = ({ statDirection }) => {
+const TeamStat = ({ statDirection, team, stats }) => {
   if (statDirection === "right") {
     return (
       <div className="flex gap-3">
         <div className="flex-1">
-          <AllPlayer />
+          <AllPlayer team={team} />
         </div>
         <div className="flex-1">
-          <TeamStatViewer />
+          <TeamStatViewer stats={stats} />
         </div>
       </div>
     );
@@ -128,10 +143,10 @@ const TeamStat = ({ statDirection }) => {
     return (
       <div className="flex gap-3">
         <div className="flex-1 ">
-          <TeamStatViewer />
+          <TeamStatViewer stats={stats} />
         </div>
         <div className="flex-1">
-          <AllPlayer />
+          <AllPlayer team={team} />
         </div>
       </div>
     );

@@ -2,7 +2,7 @@ import TeamHeader from "../../components/teamComparision/header";
 import TeamStat from "../../components/teamComparision/teamStat";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { generateTeam, opponentAnalysis } from "../../service/player";
+import { opponentAnalysis } from "../../service/player";
 import { Loader } from "../../components";
 const TeamComparison = () => {
   const teamInfo = useSelector((state) => state.teamInfo);
@@ -12,6 +12,11 @@ const TeamComparison = () => {
 
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
+  const [playerTeamA, setPlayerTeamA] = useState([]);
+  const [playerTeamB, setPlayerTeamB] = useState([]);
+  const [statsTeamA, setstatsTeamA] = useState(null);
+  const [statsTeamB, setstatsTeamB] = useState(null);
+
   const checkShow = () => {
     if (
       teamInfo?.teamA !== teamA ||
@@ -48,11 +53,28 @@ const TeamComparison = () => {
   }, [teamA, teamB, format]);
 
   const firstFetch = (teamA, teamB, format) => {
+    console.log("first fetch");
+    console.log({
+      team: teamA,
+      opponent: teamB,
+      format,
+      type: "balanced",
+      lastMatches: 10,
+    });
     setLoading(true);
     // opponentAnalysis
-    generateTeam({ teamA, teamB, format })
+    opponentAnalysis({
+      team: teamA,
+      opponent: teamB,
+      format,
+      type: "balanced",
+      lastMatches: 10,
+    })
       .then((res) => {
-        console.log(`res`, res);
+        setPlayerTeamA(res?.data?.team);
+        setPlayerTeamB(res?.data?.teamb);
+        setstatsTeamA(res?.data?.stats);
+        setstatsTeamB(res?.data?.statsb);
       })
       .catch((err) => {
         console.log("errr", err);
@@ -60,16 +82,23 @@ const TeamComparison = () => {
       .finally(() => {
         setLoading(false);
       });
-    console.log(teamA, teamB, format);
-    setLoading(false);
   };
 
   const fetchData = () => {
     setLoading(true);
-    // opponentAnalysis
-    generateTeam({ teamA, teamB, format })
+    opponentAnalysis({
+      team: teamA,
+      opponent: teamB,
+      format,
+      type: "balanced",
+      lastMatches: 10,
+    })
       .then((res) => {
-        console.log(`res`, res);
+        setPlayerTeamA(res?.data?.team);
+        setPlayerTeamB(res?.data?.teamb);
+        setstatsTeamA(res?.data?.stats);
+        setstatsTeamB(res?.data?.statsb);
+        setShow(false);
       })
       .catch((err) => {
         console.log("errr", err);
@@ -77,8 +106,6 @@ const TeamComparison = () => {
       .finally(() => {
         setLoading(false);
       });
-    console.log(teamA, teamB, format);
-    setLoading(false);
   };
   if (loading) {
     return <Loader />;
@@ -99,13 +126,17 @@ const TeamComparison = () => {
         {/* lower body */}
         <div className="flex gap-5 ">
           <div className="flex-1">
-            <TeamStat statDirection="right" />
+            <TeamStat
+              statDirection="right"
+              team={playerTeamA}
+              stats={statsTeamA}
+            />
           </div>
           <div className="">
             <div className="bg-white border-2 h-full" />
           </div>
           <div className="flex-1">
-            <TeamStat />
+            <TeamStat team={playerTeamB} stats={statsTeamB} />
           </div>
         </div>
 
