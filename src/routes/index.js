@@ -1,8 +1,9 @@
 import { useRoutes } from "react-router-dom";
-import { Product, Selection, Stats, TimePeriodMatches } from "../pages";
+import { Product, Stats, TimePeriodMatches } from "../pages";
 import ErrorPage from "../pages/error";
 import ViewTeam from "../pages/viewTeam";
 import TeamComparison from "../pages/teamComparision";
+import Selection from "../components/teamComparision/selection"
 export default function Routes() {
   return useRoutes([
     {

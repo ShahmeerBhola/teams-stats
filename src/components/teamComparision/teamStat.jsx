@@ -1,4 +1,4 @@
-import { Selection } from "../../pages";
+import Selection  from "../../components/teamComparision/selection";
 
 const AllPlayer = ({ team }) => {
   return (
@@ -28,7 +28,9 @@ const SinglePlayerTile = ({ player }) => {
             player?.playrole === "Allrounder"
               ? "/images/allrounder.png"
               : player?.playrole === "Batter"
-              ? "/images/batsman2.png"
+                ? "/images/batsman2.png"
+                : player?.playrole === "Wicketkeeper" ?
+                "/images/wicketkeeper.png"
               : "/images/baller.png"
           }
           alt=""
@@ -40,8 +42,6 @@ const SinglePlayerTile = ({ player }) => {
 };
 
 const TeamStatViewer = ({ stats }) => {
-  console.log("stats in team viewer");
-  console.log({ stats });
   return (
    
     <div className="bg-white h-[97%] my-3 "> <Selection stats={stats} /> </div>

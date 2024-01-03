@@ -27,9 +27,9 @@ const Selection = ({ stats }) => {
           <div
             style={{
               position: "absolute",
-              top: "-8px",
-              left: "-22px",
-              height: "300px",
+              top: "55px",
+              left: "-15px",
+              height: "200px",
               transform: "rotate(3deg)",
             }}
           >
@@ -42,7 +42,7 @@ const Selection = ({ stats }) => {
           <div
               className="bg-pink text-md upercase font-medium text-white"
             style={{
-              height: "50px",
+              height: " 40px",
               width: "240px",
                
               textAlign: "center",
@@ -58,7 +58,7 @@ const Selection = ({ stats }) => {
           <div
               className="bg-pink text-md upercase font-medium text-white"
             style={{
-              height: "50px",
+              height: " 40px",
               width: "240px",
                
               textAlign: "center",
@@ -74,7 +74,7 @@ const Selection = ({ stats }) => {
           <div
               className="bg-pink text-md upercase font-medium text-white"
             style={{
-              height: "50px",
+              height: " 40px",
               width: "240px",
                
               textAlign: "center",
@@ -87,22 +87,7 @@ const Selection = ({ stats }) => {
             Batting SR
             <span className="pl-3" >{stats?.Batting_Strikerate?.toFixed(2) || "--"} </span>
           </div>
-          <div
-              className="bg-pink text-md upercase font-medium text-white"
-            style={{
-              height: "50px",
-              width: "240px",
-               
-              textAlign: "center",
-              borderRadius: "20px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            Economy
-            <span className="pl-3" >{stats?.Economy?.toFixed(2) || "--"} </span>
-          </div>
+         
         </div>
         {/* {bowling} */}
         <div
@@ -118,9 +103,9 @@ const Selection = ({ stats }) => {
           <div
             style={{
               position: "absolute",
-              top: "15px",
+              top: "35px",
               left: "-50px",
-              height: "170px",
+              height: "150px",
             }}
           >
             <img
@@ -132,7 +117,7 @@ const Selection = ({ stats }) => {
           <div
          className="bg-pink text-md upercase font-medium text-white"
             style={{
-              height: "50px",
+              height: " 40px",
               width: "240px",
                
               textAlign: "center",
@@ -148,7 +133,7 @@ const Selection = ({ stats }) => {
           <div
              className="bg-pink text-md upercase font-medium text-white"
             style={{
-              height: "50px",
+              height: "40px",
               width: "300px",
                
               textAlign: "center",
@@ -156,7 +141,7 @@ const Selection = ({ stats }) => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              paddingLeft:"90px"
+              paddingLeft:"70px"
             }}
           >
             Bowling Score
@@ -165,19 +150,35 @@ const Selection = ({ stats }) => {
           <div
             className="bg-pink text-md upercase font-medium text-white"
             style={{
-              height: "50px",
-              width: "240px",
+              height: " 40px",
+              width: "300px",
         
               textAlign: "center",
               borderRadius: "20px",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-
+              paddingLeft:"60px",
             }}
           >
             Bowling SR
             <span className="pl-3">{stats?.Bowling_Strikerate?.toFixed(2) || "--"} </span>
+          </div>
+          <div
+              className="bg-pink text-md upercase font-medium text-white"
+            style={{
+              height: " 40px",
+              width: "240px",
+               
+              textAlign: "center",
+              borderRadius: "20px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            Economy
+            <span className="pl-3" >{stats?.Economy?.toFixed(2) || "--"} </span>
           </div>
         </div>
       </div>

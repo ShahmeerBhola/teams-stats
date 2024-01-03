@@ -82,6 +82,10 @@ const PlayerTileParent = ({ team }) => {
   const wicketkeeper = team.filter(
     (player) => player.playrole === "Wicketkeeper"
   );
+  const filteredPlayers = team?.filter(
+    (player) => player.playrole !== "Wicketkeeper"
+  );
+
   console.log({ wicketkeeper });
   const keeperStyle = {
     role: "wicketKeeper",
@@ -91,19 +95,17 @@ const PlayerTileParent = ({ team }) => {
   };
   return (
     <>
-      {positionStyle.map((item, key) =>
-        team?.[key]?.playrole !== "Wicketkeeper" ? (
-          <PlayerTile
-            top={item.top}
-            left={item.left}
-            key={key}
-            imgSrc={team?.[key]?.img_url}
-            name={team?.[key]?.player}
-            playrole={team?.[key]?.playrole}
-            stats={team?.[key]?.stats}
-          />
-        ) : null
-      )}
+      {positionStyle.map((item, key) => (
+        <PlayerTile
+          top={item.top}
+          left={item.left}
+          key={key}
+          imgSrc={filteredPlayers?.[key]?.img_url}
+          name={filteredPlayers?.[key]?.player}
+          playrole={filteredPlayers?.[key]?.playrole}
+          stats={filteredPlayers?.[key]?.stats}
+        />
+      ))}
       {wicketkeeper?.map((item, key) => (
         <PlayerTile
           top={keeperStyle.top}
