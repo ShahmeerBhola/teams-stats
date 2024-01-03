@@ -5,6 +5,7 @@ const FormatDropdown = ({ value, options,changeHandler, ...rest }) => {
   return (
     <div className="format mx-auto text-center">
       <Select
+        className="formatSelect"
         style={{
           border: "none",
           background: "#E1486D",
