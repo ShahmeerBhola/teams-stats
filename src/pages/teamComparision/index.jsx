@@ -17,14 +17,16 @@ const TeamComparison = () => {
   const [playerTeamB, setPlayerTeamB] = useState([]);
   const [statsTeamA, setstatsTeamA] = useState(null);
   const [statsTeamB, setstatsTeamB] = useState(null);
-  const [limit, setLimit] = useState(10);
-  const [pitch, setPitch] = useState("spin");
+  const [limit, setLimit] = useState(null);
+  const [pitch, setPitch] = useState(null);
+  const [type, setType] = useState(null);
   const checkShow = () => {
     if (
       teamInfo?.teamA !== teamA ||
       teamInfo?.format !== format ||
       teamInfo?.pitch !== pitch ||
       teamInfo?.limit !== limit ||
+      teamInfo?.type !== type ||
       teamInfo?.teamB !== teamB
     ) {
       setShow(true);
@@ -42,11 +44,28 @@ const TeamComparison = () => {
     setTeamB(val);
   };
   useEffect(() => {
-    if (teamInfo?.teamA && teamInfo?.teamB && teamInfo?.format) {
+    if (
+      teamInfo?.teamA &&
+      teamInfo?.teamB &&
+      teamInfo?.format &&
+      teamInfo?.limit &&
+      teamInfo?.pitch &&
+      teamInfo?.type
+    ) {
       setFormat(teamInfo?.format);
       setTeamA(teamInfo?.teamA);
       setTeamB(teamInfo?.teamB);
-      firstFetch(teamInfo?.teamA, teamInfo?.teamB, teamInfo?.format);
+      setLimit(teamInfo?.limit);
+      setPitch(teamInfo?.pitch);
+      setType(teamInfo?.type);
+      firstFetch(
+        teamInfo?.teamA,
+        teamInfo?.teamB,
+        teamInfo?.format,
+        teamInfo?.limit,
+        teamInfo?.pitch,
+        teamInfo?.type
+      );
     }
   }, [teamInfo]);
 
@@ -54,16 +73,15 @@ const TeamComparison = () => {
     if (teamInfo?.teamA) {
       checkShow();
     }
-  }, [teamA, teamB, format, pitch, limit]);
+  }, [teamA, teamB, format, pitch, limit, type]);
 
-  const firstFetch = (teamA, teamB, format) => {
-    console.log("first fetch");
+  const firstFetch = (teamA, teamB, format, limit, pitch, type) => {
     console.log({
       team: teamA,
       opponent: teamB,
       format,
-      type: "balanced",
-      lastMatches: 10,
+      type,
+      lastMatches: limit,
       pitch,
     });
     setLoading(true);
@@ -99,7 +117,7 @@ const TeamComparison = () => {
       team: teamA,
       opponent: teamB,
       format,
-      type: "balanced",
+      type,
       lastMatches: limit,
       pitch,
     })
@@ -127,6 +145,9 @@ const TeamComparison = () => {
   const limitHandler = (val) => {
     setLimit(val);
   };
+  const typeHandler = (val) => {
+    setType(val);
+  };
   if (loading) {
     return <Loader />;
   } else {
@@ -144,6 +165,8 @@ const TeamComparison = () => {
             limitHandler={limitHandler}
             pitchHandler={pitchHandler}
             pitchValue={pitch}
+            type={type}
+            typeHandler={typeHandler}
           />
         </div>
 

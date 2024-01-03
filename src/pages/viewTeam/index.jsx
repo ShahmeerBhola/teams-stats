@@ -10,10 +10,14 @@ import StatShowTile from "../../components/viewTeam/StatTile";
 import AnalysisModal from "../../components/modal/AnalysisModal";
 import { useNavigate } from "react-router-dom";
 
+import FormatDropdown from "../../components/teamComparision/FormatDrorpdown";
+
 import { setTeamInfo } from "../../redux/action/team";
 import { useDispatch } from "react-redux";
+import { FORMAT, LIMIT, PITCH, TYPE } from "../../constant";
 const ViewTeam = () => {
   const navigate = useNavigate();
+  const [currentTeamName, setCurrenteamname] = useState("Pakistan");
   const [team, setTeam] = useState([]);
   const [teamStats, setTeamStats] = useState(null);
   const [teamName, setTeamName] = useState("Pakistan");
@@ -21,6 +25,9 @@ const ViewTeam = () => {
   const [lastMatches, setLastMatches] = useState(10);
   const [loading, setLoading] = useState(true);
   const [openModal, setOpenModal] = useState(false);
+  const [limit, setLimit] = useState(10);
+  const [pitch, setPitch] = useState("spin");
+  const [type, setType] = useState("balanced");
   const dispatch = useDispatch();
   const styles = {
     backgroundImage: `url('/images/statBG.png')`,
@@ -31,12 +38,21 @@ const ViewTeam = () => {
 
   const fetchData = () => {
     setLoading(true);
-    generateTeam({ team: teamName, format, lastMatches, type: "balanced" })
+    generateTeam({
+      team: teamName,
+      format,
+      lastMatches,
+      type,
+      pitch,
+      limit,
+    })
       .then((res) => {
-        console.log(" >> ", res);
-        console.log(res?.data?.stats);
-        setTeamStats(res?.data?.stats);
-        setTeam(res?.data?.team);
+        if (res?.data?.success) {
+          setTeamStats(res?.data?.stats);
+          setTeam(res?.data?.team);
+          setCurrenteamname(teamName);
+        } else {
+        }
       })
       .catch((err) => {
         console.log({ err });
@@ -46,10 +62,9 @@ const ViewTeam = () => {
       });
   };
   const onSelectTeam = (teamB) => {
-    console.log({ teamB });
-    // hit api here
-    // then route to
-    dispatch(setTeamInfo({ teamA: teamName, format, teamB }));
+    dispatch(
+      setTeamInfo({ teamA: teamName, format, teamB, pitch, limit, type })
+    );
     navigate("/comparison");
   };
   useEffect(() => {
@@ -58,6 +73,10 @@ const ViewTeam = () => {
 
   const setTeamA = (val) => {
     setTeamName(val);
+  };
+  const pitchHandler = (val) => {
+    const p = PITCH.find(({ value }) => value === val)?.label;
+    setPitch(p);
   };
   if (loading) {
     return <Loader />;
@@ -75,7 +94,9 @@ const ViewTeam = () => {
           style={styles}
         >
           <div className="w-3/4">
-            {team.length ? <PlayerTileParent team={team} /> : null}
+            {team.length ? (
+              <PlayerTileParent team={team} teamName={teamName} />
+            ) : null}
           </div>
           <div className="w-1/4 ">
             <div className="flex pt-6 gap-4 ">
@@ -84,21 +105,37 @@ const ViewTeam = () => {
               </div>
             </div>
 
-            <div className="flex pt-6 gap-10 relative left-[-45px] ">
-              <FormatButton
-                active={format === "t20"}
-                onClick={() => setFormat("t20")}
-              />
-              <FormatButton
-                text="ODI"
-                active={format === "odi"}
-                onClick={() => setFormat("odi")}
-              />
-              <FormatButton
-                text="TEST"
-                active={format === "test"}
-                onClick={() => setFormat("test")}
-              />
+            <div className="flex pt-6 gap-10 relative left-[-115px] ">
+              <div className="flex items-center justify-center gap-2">
+                <div>
+                  <FormatDropdown
+                    value={limit}
+                    changeHandler={(val) => setLimit(val)}
+                    options={LIMIT}
+                  />
+                </div>
+                <div>
+                  <FormatDropdown
+                    value={format}
+                    changeHandler={(val) => setFormat(val)}
+                    options={FORMAT}
+                  />
+                </div>
+                <div>
+                  <FormatDropdown
+                    value={pitch}
+                    changeHandler={pitchHandler}
+                    options={PITCH}
+                  />
+                </div>
+                <div>
+                  <FormatDropdown
+                    value={type}
+                    changeHandler={(val) => setType(val)}
+                    options={TYPE}
+                  />
+                </div>
+              </div>
             </div>
             <div className="relative left-[-45px]">
               <div className="flex gap-4 pt-7  w-[65%] mx-auto">

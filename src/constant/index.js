@@ -84,9 +84,18 @@ export const LIMIT = [
 
 export const PITCH = [
   {
-    label: 'neutral',
-    value: 'neutral',
+    label: "Neutral",
+    value: "neutral",
   },
-  { label: "spin", value: "grassy" },
-  { label: "fast", value: "bouncy" },
+  { label: "Grassy", value: "spin" },
+  { label: "Bouncy", value: "fast" },
+];
+
+export const TYPE = [
+  {
+    label: "Batting",
+    value: "batting",
+  },
+  { label: "Bowling", value: "bowling" },
+  { label: "Balanced", value: "balanced" },
 ];
