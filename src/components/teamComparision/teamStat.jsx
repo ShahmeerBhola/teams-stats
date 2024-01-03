@@ -1,4 +1,4 @@
-import { Progress } from "antd";
+import { Selection } from "../../pages";
 
 const AllPlayer = ({ team }) => {
   return (
@@ -43,88 +43,8 @@ const TeamStatViewer = ({ stats }) => {
   console.log("stats in team viewer");
   console.log({ stats });
   return (
-    <div className="bg-white h-[97%] my-3">
-      <div className="flex gap-4 pt-4">
-        <div className="flex-1">
-          <Progress
-            type="circle"
-            percent={75}
-            format={(percent) => `${percent} Days`}
-          />
-        </div>
-        <div className="flex-1">
-          <Progress
-            type="circle"
-            percent={75}
-            format={(percent) => `${percent} Days`}
-          />
-        </div>
-      </div>
-      <div className="flex gap-4 pt-4">
-        <div className="flex-1">
-          <Progress
-            type="circle"
-            percent={75}
-            format={(percent) => `${percent} Days`}
-          />
-        </div>
-        <div className="flex-1">
-          <Progress
-            type="circle"
-            percent={75}
-            format={(percent) => `${percent} Days`}
-          />
-        </div>
-      </div>
-      <div className="flex gap-4 pt-4">
-        <div className="flex-1">
-          <Progress
-            type="circle"
-            percent={75}
-            format={(percent) => `${percent} Days`}
-          />
-        </div>
-        <div className="flex-1">
-          <Progress
-            type="circle"
-            percent={75}
-            format={(percent) => `${percent} Days`}
-          />
-        </div>
-      </div>
-      <div className="flex gap-4 pt-4">
-        <div className="flex-1">
-          <Progress
-            type="circle"
-            percent={75}
-            format={(percent) => `${percent} Days`}
-          />
-        </div>
-        <div className="flex-1">
-          <Progress
-            type="circle"
-            percent={75}
-            format={(percent) => `${percent} Days`}
-          />
-        </div>
-      </div>
-      <div className="flex gap-4 pt-4">
-        <div className="flex-1">
-          <Progress
-            type="circle"
-            percent={75}
-            format={(percent) => `${percent} Days`}
-          />
-        </div>
-        <div className="flex-1">
-          <Progress
-            type="circle"
-            percent={75}
-            format={(percent) => `${percent} Days`}
-          />
-        </div>
-      </div>
-    </div>
+   
+    <div className="bg-white h-[97%] my-3 "> <Selection stats={stats} /> </div>
   );
 };
 const TeamStat = ({ statDirection, team, stats }) => {
