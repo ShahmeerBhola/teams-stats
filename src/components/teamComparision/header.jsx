@@ -1,6 +1,6 @@
 import FlagSelect from "../SelectWithFlag";
 import FormatDropdown from "./FormatDrorpdown";
-
+import { FORMAT, LIMIT, PITCH } from "../../constant";
 const TeamHeader = ({
   formatValue,
   formatHandler,
@@ -8,6 +8,10 @@ const TeamHeader = ({
   teamAhandler,
   teamB,
   teamBhandler,
+  pitchValue,
+  limitValue,
+  limitHandler,
+  pitchHandler,
 }) => {
   return (
     <div className="flex gap-5">
@@ -22,8 +26,28 @@ const TeamHeader = ({
         </div>
       </div>
       <div className="flex-1">
-        <div className=" mx-auto">
-          <FormatDropdown value={formatValue} changeHandler={formatHandler} />
+        <div className="flex gap-3 mx-auto items-center justify-center">
+          <div>
+            <FormatDropdown
+              value={limitValue}
+              changeHandler={limitHandler}
+              options={LIMIT}
+            />
+          </div>
+          <div>
+            <FormatDropdown
+              value={formatValue}
+              changeHandler={formatHandler}
+              options={FORMAT}
+            />
+          </div>
+          <div>
+            <FormatDropdown
+              value={pitchValue}
+              changeHandler={pitchHandler}
+              options={PITCH}
+            />
+          </div>
         </div>
       </div>
       <div className="flex-1 flex justify-end">

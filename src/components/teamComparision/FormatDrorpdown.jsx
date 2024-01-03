@@ -1,5 +1,5 @@
 import { Select } from "antd";
-import { FORMAT } from "../../constant";
+
 import "./format.css";
 const FormatDropdown = ({ value, options,changeHandler, ...rest }) => {
   return (
@@ -11,8 +11,8 @@ const FormatDropdown = ({ value, options,changeHandler, ...rest }) => {
           background: "#E1486D",
           color: "#fff",
         }}
-        value={value ?? FORMAT[0]}
-        options={FORMAT}
+        value={value ?? options?.[0]}
+        options={options}
         onChange={(val) => changeHandler(val)}
         {...rest}
       />

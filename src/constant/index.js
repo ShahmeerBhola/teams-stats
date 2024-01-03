@@ -72,3 +72,21 @@ export const STATRELEVANCE = [
   },
   { label: "By Last Matches", value: "lastMatches" },
 ];
+
+export const LIMIT = [
+  {
+    label: 5,
+    value: 5,
+  },
+  { label: 10, value: 10 },
+  { label: 15, value: 15 },
+];
+
+export const PITCH = [
+  {
+    label: 'neutral',
+    value: 'neutral',
+  },
+  { label: "spin", value: "grassy" },
+  { label: "fast", value: "bouncy" },
+];

@@ -2,7 +2,16 @@ import { useState, useEffect } from "react";
 import PlayerStatsCard from "./PlayerStatsCard";
 import { positionStyle } from "../../constant/viewTeamStyle";
 
-const PlayerTile = ({ imgSrc, style, top, left, name, playrole, stats }) => {
+const PlayerTile = ({
+  imgSrc,
+  style,
+  top,
+  left,
+  name,
+  playrole,
+  stats,
+  teamName,
+}) => {
   const [isHovered, setIsHovered] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [screenHeight, setScreenHeight] = useState(window.innerHeight);
@@ -71,6 +80,7 @@ const PlayerTile = ({ imgSrc, style, top, left, name, playrole, stats }) => {
             playrole={playrole}
             imgSrc={imgSrc}
             stats={stats}
+            teamName={teamName}
           />
         </div>
       )}
@@ -78,7 +88,7 @@ const PlayerTile = ({ imgSrc, style, top, left, name, playrole, stats }) => {
   );
 };
 
-const PlayerTileParent = ({ team }) => {
+const PlayerTileParent = ({ team, teamName }) => {
   const wicketkeeper = team.filter(
     (player) => player.playrole === "Wicketkeeper"
   );
@@ -86,7 +96,6 @@ const PlayerTileParent = ({ team }) => {
     (player) => player.playrole !== "Wicketkeeper"
   );
 
-  console.log({ wicketkeeper });
   const keeperStyle = {
     role: "wicketKeeper",
     style: "top-[210px] left-[530px]",
@@ -104,6 +113,7 @@ const PlayerTileParent = ({ team }) => {
           name={filteredPlayers?.[key]?.player}
           playrole={filteredPlayers?.[key]?.playrole}
           stats={filteredPlayers?.[key]?.stats}
+          teamName={teamName}
         />
       ))}
       {wicketkeeper?.map((item, key) => (
@@ -115,6 +125,7 @@ const PlayerTileParent = ({ team }) => {
           name={item.player}
           playrole={item?.playrole}
           stats={team?.[key]?.stats}
+          teamName={teamName}
         />
       ))}
     </>

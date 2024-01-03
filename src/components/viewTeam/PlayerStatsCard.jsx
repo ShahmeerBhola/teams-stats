@@ -1,19 +1,19 @@
+import { TEAM } from "../../constant";
 const mainBgStyle = {
   backgroundImage: `url('/images/bg.jpg')`,
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
 };
+const PlayerStatsCard = ({ name, playrole, imgSrc, stats, teamName }) => {
+  const teamFlag = TEAM.find(({ value }) => value === teamName)?.imgSrc;
 
-const PlayerStatsCard = ({ name, playrole, imgSrc, teamFlagUrl, stats }) => {
   const playerBgStyle = {
     backgroundImage: `url(${imgSrc})`,
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
   };
-
-  console.log({ playrole });
   return (
     <div className="relative h-full w-full rounded-3xl" style={mainBgStyle}>
       <div
@@ -22,7 +22,11 @@ const PlayerStatsCard = ({ name, playrole, imgSrc, teamFlagUrl, stats }) => {
       ></div>
       <div className="absolute z-10 bg-transparent  bg-gradient-to-b from-transparent to-indigo-900  top-0 left-0 h-full w-full rounded-3xl">
         <div className="flex flex-col items-center text-white mt-[50%]">
-          <img src="/images/pak2.png" alt="" className="h-6 w-6" />
+          <img
+            src={teamFlag || "/images/pak2.png"}
+            alt=""
+            className="h-6 w-6"
+          />
           <div className="font-black text-2xl uppercase">
             {name?.split(" ")[0]}{" "}
           </div>
