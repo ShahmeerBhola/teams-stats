@@ -5,7 +5,6 @@ import { Loader } from "../../components";
 import { generateTeam } from "../../service/player";
 import PlayerTileParent from "../../components/viewTeam/AllPlayerPopover";
 import FilledButton from "../../components/viewTeam/FilledButton";
-import FormatButton from "../../components/viewTeam/FormatButton";
 import StatShowTile from "../../components/viewTeam/StatTile";
 import AnalysisModal from "../../components/modal/AnalysisModal";
 import { useNavigate } from "react-router-dom";
@@ -13,27 +12,53 @@ import { useNavigate } from "react-router-dom";
 import FormatDropdown from "../../components/teamComparision/FormatDrorpdown";
 
 import { setTeamInfo } from "../../redux/action/team";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FORMAT, LIMIT, PITCH, TYPE } from "../../constant";
 const ViewTeam = () => {
   const navigate = useNavigate();
   const [currentTeamName, setCurrenteamname] = useState("Pakistan");
   const [team, setTeam] = useState([]);
   const [teamStats, setTeamStats] = useState(null);
-  const [teamName, setTeamName] = useState("Pakistan");
-  const [format, setFormat] = useState("t20");
+  const [teamName, setTeamName] = useState(null);
+  const [format, setFormat] = useState(null);
   const [lastMatches, setLastMatches] = useState(10);
   const [loading, setLoading] = useState(true);
   const [openModal, setOpenModal] = useState(false);
-  const [limit, setLimit] = useState(10);
-  const [pitch, setPitch] = useState("spin");
-  const [type, setType] = useState("balanced");
+  const [limit, setLimit] = useState(null);
+  const [pitch, setPitch] = useState(null);
+  const [type, setType] = useState(null);
+  const teamInfo = useSelector((state) => state.teamInfo);
   const dispatch = useDispatch();
   const styles = {
     backgroundImage: `url('/images/statBG.png')`,
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
+  };
+
+  const firstFetch = (team, format, lastMatches, pitch, type) => {
+    setLoading(true);
+    generateTeam({
+      team,
+      format,
+      lastMatches,
+      type,
+      pitch,
+    })
+      .then((res) => {
+        if (res?.data?.success) {
+          setTeamStats(res?.data?.stats);
+          setTeam(res?.data?.team);
+          setCurrenteamname(teamName);
+        } else {
+        }
+      })
+      .catch((err) => {
+        console.log({ err });
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   const fetchData = () => {
@@ -70,6 +95,29 @@ const ViewTeam = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (
+      teamInfo?.teamA &&
+      teamInfo?.format &&
+      teamInfo?.limit &&
+      teamInfo?.pitch &&
+      teamInfo?.type
+    ) {
+      setFormat(teamInfo?.format);
+      setTeamName(teamInfo?.teamA);
+      setLimit(teamInfo?.limit);
+      setPitch(teamInfo?.pitch);
+      setType(teamInfo?.type);
+      firstFetch(
+        teamInfo?.teamA,
+        teamInfo?.format,
+        teamInfo?.limit,
+        teamInfo?.pitch,
+        teamInfo?.type
+      );
+    }
+  }, [teamInfo]);
 
   const setTeamA = (val) => {
     setTeamName(val);
