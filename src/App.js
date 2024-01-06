@@ -4,7 +4,8 @@ import "./styles/global.css";
 import store from "./store";
 import { Provider } from "react-redux";
 import Axios from "axios";
-Axios.defaults.baseURL = `http://localhost:5000`;
+
+Axios.defaults.baseURL = process.env.REACT_APP_API_KEY;
 function App() {
   return (
     <Provider store={store}>
