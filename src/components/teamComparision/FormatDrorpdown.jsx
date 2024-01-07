@@ -2,6 +2,7 @@ import { Select } from "antd";
 
 import "./format.css";
 const FormatDropdown = ({
+  label,
   value,
   options,
   changeHandler,
@@ -10,13 +11,17 @@ const FormatDropdown = ({
 }) => {
   return (
     <div className={`format mx-auto text-center `}>
+      {label ? (
+        <p className="text-lg font-medium text-start py-2 ">{label} :</p>
+      ) : null}
       <Select
         className="formatSelect"
         style={{
           border: "none",
           background: "#E1486D",
           color: "#fff",
-          width : classCss ? '220px' : "100%"
+          width: classCss ? "220px" : "100%",
+          height: classCss ? "60px" : "50px",
         }}
         value={value ?? options?.[0]}
         options={options}

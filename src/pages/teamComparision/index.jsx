@@ -102,7 +102,7 @@ const TeamComparison = () => {
           setstatsTeamA(res?.data?.stats);
           setstatsTeamB(res?.data?.statsb);
         } else {
-          toast.error("Failed to load the resources");
+          toast.error(res?.data?.message || "Failed to load the resources");
         }
       })
       .catch((err) => {
@@ -131,7 +131,7 @@ const TeamComparison = () => {
           setstatsTeamB(res?.data?.statsb);
           setShow(false);
         } else {
-          toast.error("Failed to load the resources");
+          toast.error(res?.data?.message || "Failed to load the resources");
         }
       })
       .catch((err) => {

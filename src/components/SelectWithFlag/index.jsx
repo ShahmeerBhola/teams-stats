@@ -55,7 +55,7 @@ const FlagSelect = ({ showModal, bgColor, dValue, changeHandler }) => {
           className="h-16 w-40  object-contain "
         />
       </div>
-      <div className={bgColor ? "text-black" : "text-white"}>
+      <div className={` w-3/4   ${bgColor ? "text-black" : "text-white"}`}>
         <Select
           popupClassName={showModal}
           ref={selectRef}
@@ -63,10 +63,10 @@ const FlagSelect = ({ showModal, bgColor, dValue, changeHandler }) => {
           onBlur={handleSelectBlur}
           defaultValue={value}
           style={{
-            width: 220,
             border: "none",
             background: `${bgColor ? "#fff" : "#35336E"}`,
             color: `${bgColor ? "#000" : "#fff"}`,
+            textTransform: "uppercase",
           }}
           dropdownStyle={{
             width: 370,

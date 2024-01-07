@@ -52,7 +52,7 @@ const ViewTeam = () => {
           setTeam(res?.data?.team);
           setCurrenteamname(teamName);
         } else {
-          toast.error("Failed to load the resources");
+          toast.error(res?.data?.message || "Failed to load the resources");
           // navigate("/");
         }
       })
@@ -69,10 +69,9 @@ const ViewTeam = () => {
     generateTeam({
       team: teamName,
       format,
-      lastMatches,
+      lastMatches: limit,
       type,
       pitch,
-      limit,
     })
       .then((res) => {
         if (res?.data?.success) {
@@ -80,7 +79,7 @@ const ViewTeam = () => {
           setTeam(res?.data?.team);
           setCurrenteamname(teamName);
         } else {
-          toast.error("Failed to load the resources");
+          toast.error(res?.data?.message || "Failed to load the resources");
           // navigate("/");
         }
       })
@@ -152,41 +151,49 @@ const ViewTeam = () => {
             ) : null}
           </div>
           <div className="w-1/4 ">
-            <div className="flex pt-6 gap-4 ">
+            <div className="flex pt-3 gap-4 ">
               <div className="relative left-[-45px] w-full">
                 <FlagSelect dValue={teamName} changeHandler={setTeamA} />
               </div>
             </div>
 
-            <div className="flex pt-6 gap-10 relative left-[-115px] ">
-              <div className="flex items-center justify-center gap-2">
-                <div>
-                  <FormatDropdown
-                    value={limit}
-                    changeHandler={(val) => setLimit(val)}
-                    options={LIMIT}
-                  />
+            <div className="flex pt-3 gap-10 relative left-[-60px] ">
+              <div className="w-full">
+                <div className="flex items-center justify-between  w-full ">
+                  <div>
+                    <FormatDropdown
+                      value={type}
+                      changeHandler={(val) => setType(val)}
+                      options={TYPE}
+                      label="Playing Style"
+                    />
+                  </div>
+                  <div>
+                    <FormatDropdown
+                      value={format}
+                      changeHandler={(val) => setFormat(val)}
+                      options={FORMAT}
+                      label="Format"
+                    />
+                  </div>
                 </div>
-                <div>
-                  <FormatDropdown
-                    value={format}
-                    changeHandler={(val) => setFormat(val)}
-                    options={FORMAT}
-                  />
-                </div>
-                <div>
-                  <FormatDropdown
-                    value={pitch}
-                    changeHandler={pitchHandler}
-                    options={PITCH}
-                  />
-                </div>
-                <div>
-                  <FormatDropdown
-                    value={type}
-                    changeHandler={(val) => setType(val)}
-                    options={TYPE}
-                  />
+                <div className="flex items-center justify-between  w-full ">
+                  <div>
+                    <FormatDropdown
+                      value={pitch}
+                      changeHandler={pitchHandler}
+                      options={PITCH}
+                      label="Pitch"
+                    />
+                  </div>
+                  <div>
+                    <FormatDropdown
+                      value={limit}
+                      changeHandler={(val) => setLimit(val)}
+                      options={LIMIT}
+                      label="Last Matches"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -241,7 +248,7 @@ const ViewTeam = () => {
                 </div>
               </div>
             </div>
-            <div className="flex gap-[50px] pt-10 relative left-2">
+            <div className="flex gap-[50px] pt-4 relative left-2">
               <div>
                 <FilledButton
                   text="Opponent"

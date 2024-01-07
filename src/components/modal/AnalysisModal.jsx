@@ -43,36 +43,40 @@ const AnalysisModal = ({
               <div className="flex w-full items-center justify-between py-3">
                 <div>
                   <FormatDropdown
-                    value={limit}
-                    changeHandler={limitHandler}
-                    options={LIMIT}
+                    value={format}
+                    changeHandler={formatHandler}
+                    options={FORMAT}
                     classCss
+                    label="Format"
                   />
                 </div>
                 <div>
                   <FormatDropdown
-                    value={type}
-                    changeHandler={typeHandler}
-                    options={TYPE}
+                    value={limit}
+                    changeHandler={limitHandler}
+                    options={LIMIT}
                     classCss
+                    label="Last Matches"
                   />
                 </div>
               </div>
               <div className="flex w-full items-center justify-between">
                 <div>
                   <FormatDropdown
-                    value={pitch}
-                    changeHandler={pitchHandler}
-                    options={PITCH}
+                    value={type}
+                    changeHandler={typeHandler}
+                    options={TYPE}
                     classCss
+                    label="Playing Style"
                   />
                 </div>
                 <div>
                   <FormatDropdown
-                    value={format}
-                    changeHandler={formatHandler}
-                    options={FORMAT}
+                    value={pitch}
+                    changeHandler={pitchHandler}
+                    options={PITCH}
                     classCss
+                    label="Pitch"
                   />
                 </div>
               </div>
