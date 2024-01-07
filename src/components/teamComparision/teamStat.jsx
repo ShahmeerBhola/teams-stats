@@ -1,4 +1,4 @@
-import Selection  from "../../components/teamComparision/selection";
+import Selection from "../../components/teamComparision/selection";
 
 const AllPlayer = ({ team }) => {
   return (
@@ -23,19 +23,24 @@ const SinglePlayerTile = ({ player }) => {
       />
       <p className="text-lg font-bold  tracking-[.25em] uppercase mx-auto flex items-center">
         {player?.player || " Babar Azam"}
-        <img
-          src={
-            player?.playrole === "Allrounder"
-              ? "/images/allrounder.png"
-              : player?.playrole === "Batter"
+        {player?.playrole === "Allrounder" ? (
+          <>
+            <img className="h-4 w-4 ml-2" src="/images/batsman2.png" alt="" />
+            <img className="h-4 w-4 ml-2" src="/images/baller.png" alt="" />
+          </>
+        ) : (
+          <img
+            src={
+              player?.playrole === "Batter"
                 ? "/images/batsman2.png"
-                : player?.playrole === "Wicketkeeper" ?
-                "/images/wicketkeeper.png"
-              : "/images/baller.png"
-          }
-          alt=""
-          className="h-4 w-4 ml-2"
-        />
+                : player?.playrole === "Wicketkeeper"
+                ? "/images/wicketkeeper.png"
+                : "/images/baller.png"
+            }
+            alt=""
+            className="h-4 w-4 ml-2"
+          />
+        )}
       </p>
     </div>
   );
@@ -43,8 +48,9 @@ const SinglePlayerTile = ({ player }) => {
 
 const TeamStatViewer = ({ stats }) => {
   return (
-   
-    <div className="bg-white h-[97%] my-3 "> <Selection stats={stats} /> </div>
+    <div className="bg-white h-[97%] my-3 ">
+      <Selection stats={stats} />
+    </div>
   );
 };
 const TeamStat = ({ statDirection, team, stats }) => {
