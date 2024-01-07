@@ -37,7 +37,6 @@ const ViewTeam = () => {
   };
 
   const firstFetch = (team, format, lastMatches, pitch, type) => {
-    if (!team && !format && !lastMatches && !type && !pitch) return;
     setLoading(true);
     generateTeam({
       team,
@@ -96,17 +95,15 @@ const ViewTeam = () => {
     );
     navigate("/comparison");
   };
-  useEffect(() => {
-    fetchData();
-  }, []);
+
 
   useEffect(() => {
     if (
-      teamInfo?.teamA &&
-      teamInfo?.format &&
-      teamInfo?.limit &&
-      teamInfo?.pitch &&
-      teamInfo?.type
+      teamInfo?.teamA !== undefined &&
+      teamInfo?.format !== undefined &&
+      teamInfo?.limit !== undefined &&
+      teamInfo?.pitch !== undefined &&
+      teamInfo?.type !== undefined
     ) {
       setFormat(teamInfo?.format);
       setTeamName(teamInfo?.teamA);
