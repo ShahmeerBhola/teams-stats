@@ -1,21 +1,41 @@
 import Selection from "../../components/teamComparision/selection";
+import { useDispatch } from "react-redux";
+import { setPlayerStats, setTeamInfo } from "../../redux/action/team";
 
-const AllPlayer = ({ team }) => {
+const AllPlayer = ({ team, statDirection }) => {
+  const dispatch = useDispatch();
+
+  const clickHandler = (item) => {
+    console.log("running click handler", statDirection);
+    if (statDirection === "right") {
+      dispatch(setPlayerStats({ playerB: item }));
+    } else {
+      dispatch(setPlayerStats({ playerA: item }));
+    }
+  };
+
   return (
     <div
       className="
   bg-white bg-opacity-40 border-2 border-white"
     >
       {team?.map((item, key) => (
-        <SinglePlayerTile player={item} key={key} />
+        <SinglePlayerTile
+          player={item}
+          key={key}
+          onClick={() => clickHandler(item)}
+        />
       ))}
     </div>
   );
 };
 
-const SinglePlayerTile = ({ player }) => {
+const SinglePlayerTile = ({ player, onClick }) => {
   return (
-    <div className="flex h-[55px] bg-white rounded-3xl items-center m-2 ">
+    <div
+      className="flex h-[55px] bg-white rounded-3xl items-center m-2 "
+      onClick={onClick}
+    >
       <img
         src={player?.img_url || "/images/babar.webp"}
         alt=""
@@ -46,10 +66,10 @@ const SinglePlayerTile = ({ player }) => {
   );
 };
 
-const TeamStatViewer = ({ stats }) => {
+const TeamStatViewer = ({ stats, statDirection }) => {
   return (
     <div className="bg-white h-[97%] my-3 ">
-      <Selection stats={stats} />
+      <Selection stats={stats} statDirection={statDirection} />
     </div>
   );
 };
@@ -58,10 +78,10 @@ const TeamStat = ({ statDirection, team, stats }) => {
     return (
       <div className="flex gap-3">
         <div className="flex-1">
-          <AllPlayer team={team} />
+          <AllPlayer team={team} statDirection={statDirection} />
         </div>
         <div className="flex-1">
-          <TeamStatViewer stats={stats} />
+          <TeamStatViewer stats={stats} statDirection={statDirection} />
         </div>
       </div>
     );
@@ -69,10 +89,10 @@ const TeamStat = ({ statDirection, team, stats }) => {
     return (
       <div className="flex gap-3">
         <div className="flex-1 ">
-          <TeamStatViewer stats={stats} />
+          <TeamStatViewer stats={stats} statDirection={statDirection} />
         </div>
         <div className="flex-1">
-          <AllPlayer team={team} />
+          <AllPlayer team={team} statDirection={statDirection} />
         </div>
       </div>
     );

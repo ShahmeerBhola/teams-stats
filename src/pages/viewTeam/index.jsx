@@ -150,7 +150,7 @@ const ViewTeam = () => {
           <div className="w-1/4 ">
             <div className="flex pt-3 gap-4 ">
               <div className="relative left-[-45px] w-full">
-                <FlagSelect dValue={teamName} changeHandler={setTeamA} />
+                <FlagSelect showModal='singleTeam' dValue={teamName} changeHandler={setTeamA} />
               </div>
             </div>
 

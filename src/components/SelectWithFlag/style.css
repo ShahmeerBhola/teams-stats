@@ -14,7 +14,10 @@
 .firstHeader {
   inset: 90px auto auto 25px !important;
 }
-
+.singleTeam {
+  width: 400px !important;
+  inset: 80px 60px auto auto !important;
+}
 .lastHeader {
   inset: 90px 15px auto auto !important;
 }

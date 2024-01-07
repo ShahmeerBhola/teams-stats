@@ -12,7 +12,7 @@ const TeamComparison = () => {
   const [teamA, setTeamA] = useState(null);
   const [teamB, setTeamB] = useState(null);
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [show, setShow] = useState(false);
   const [playerTeamA, setPlayerTeamA] = useState([]);
   const [playerTeamB, setPlayerTeamB] = useState([]);
