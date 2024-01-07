@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { opponentAnalysis } from "../../service/player";
 import { Loader } from "../../components";
 import { PITCH } from "../../constant";
+import { toast } from "react-toastify";
 const TeamComparison = () => {
   const teamInfo = useSelector((state) => state.teamInfo);
   const [format, setFormat] = useState(null);
@@ -101,6 +102,7 @@ const TeamComparison = () => {
           setstatsTeamA(res?.data?.stats);
           setstatsTeamB(res?.data?.statsb);
         } else {
+          toast.error("Failed to load the resources");
         }
       })
       .catch((err) => {
@@ -129,6 +131,7 @@ const TeamComparison = () => {
           setstatsTeamB(res?.data?.statsb);
           setShow(false);
         } else {
+          toast.error("Failed to load the resources");
         }
       })
       .catch((err) => {

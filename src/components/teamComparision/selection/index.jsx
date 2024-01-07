@@ -35,7 +35,7 @@ const Selection = ({ stats }) => {
           >
             <img
               src="/images/BAT.png"
-              alt="image"
+              alt=""
               style={{ height: "100%", width: "100%" }}
             />
           </div>
@@ -110,7 +110,7 @@ const Selection = ({ stats }) => {
           >
             <img
               src="/images/BALL2.png"
-              alt="image"
+              alt=""
               style={{ height: "100%", width: "100%" }}
             />
           </div>

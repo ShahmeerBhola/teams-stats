@@ -8,7 +8,7 @@ import FilledButton from "../../components/viewTeam/FilledButton";
 import StatShowTile from "../../components/viewTeam/StatTile";
 import AnalysisModal from "../../components/modal/AnalysisModal";
 import { useNavigate } from "react-router-dom";
-
+import { toast } from "react-toastify";
 import FormatDropdown from "../../components/teamComparision/FormatDrorpdown";
 
 import { setTeamInfo } from "../../redux/action/team";
@@ -37,6 +37,7 @@ const ViewTeam = () => {
   };
 
   const firstFetch = (team, format, lastMatches, pitch, type) => {
+    if (!team && !format && !lastMatches && !type && !pitch) return;
     setLoading(true);
     generateTeam({
       team,
@@ -51,6 +52,8 @@ const ViewTeam = () => {
           setTeam(res?.data?.team);
           setCurrenteamname(teamName);
         } else {
+          toast.error("Failed to load the resources");
+          // navigate("/");
         }
       })
       .catch((err) => {
@@ -77,6 +80,8 @@ const ViewTeam = () => {
           setTeam(res?.data?.team);
           setCurrenteamname(teamName);
         } else {
+          toast.error("Failed to load the resources");
+          // navigate("/");
         }
       })
       .catch((err) => {
@@ -143,7 +148,7 @@ const ViewTeam = () => {
         >
           <div className="w-3/4">
             {team.length ? (
-              <PlayerTileParent team={team} teamName={teamName} />
+              <PlayerTileParent team={team} teamName={currentTeamName} />
             ) : null}
           </div>
           <div className="w-1/4 ">
