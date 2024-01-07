@@ -1,16 +1,24 @@
 import Selection from "../../components/teamComparision/selection";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setPlayerStats, setTeamInfo } from "../../redux/action/team";
 
 const AllPlayer = ({ team, statDirection }) => {
   const dispatch = useDispatch();
+  const teamInfo = useSelector((state) => state.teamStats);
 
   const clickHandler = (item) => {
-    console.log("running click handler", statDirection);
     if (statDirection === "right") {
-      dispatch(setPlayerStats({ playerB: item }));
+      if (teamInfo?.playerB?.id === item.id) {
+        dispatch(setPlayerStats({ playerB: null }));
+      } else {
+        dispatch(setPlayerStats({ playerB: item }));
+      }
     } else {
-      dispatch(setPlayerStats({ playerA: item }));
+      if (teamInfo?.playerA?.id === item.id) {
+        dispatch(setPlayerStats({ playerA: null }));
+      } else {
+        dispatch(setPlayerStats({ playerA: item }));
+      }
     }
   };
 
@@ -24,16 +32,22 @@ const AllPlayer = ({ team, statDirection }) => {
           player={item}
           key={key}
           onClick={() => clickHandler(item)}
+          active={
+            teamInfo?.playerA?.id === item.id ||
+            teamInfo?.playerB?.id === item.id
+          }
         />
       ))}
     </div>
   );
 };
 
-const SinglePlayerTile = ({ player, onClick }) => {
+const SinglePlayerTile = ({ player, onClick, active }) => {
   return (
     <div
-      className="flex h-[55px] bg-white rounded-3xl items-center m-2 "
+      className={`flex h-[55px] bg-white rounded-3xl items-center m-2 ${
+        active ? "!bg-pink  text-white" : ""
+      } cursor-pointer`}
       onClick={onClick}
     >
       <img

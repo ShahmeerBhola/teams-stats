@@ -4,9 +4,12 @@ import { useSelector } from "react-redux";
 const TeamStats = ({ stats }) => {
   return (
     <div style={{ height: "100%", width: "100%" }}>
+      <div className="flex items-center justify-center text-xl font-bold pt-3 uppercase">
+        Team Stats
+      </div>
       <div
         style={{
-          height: "100%",
+          height: `calc(100% - 50px)`,
           display: "flex",
           justifyContent: "space-around",
           alignItems: "center",
@@ -224,7 +227,8 @@ const PlayerStats = ({ player }) => {
       </div>
       <div
         style={{
-          height: `calc(100% - 200px)`,
+          height:
+            player?.playrole === "Allrounder" ? `calc(100% - 200px)` : "auto",
           display: "flex",
           alignItems: "center",
           flexDirection: "column",
@@ -233,187 +237,191 @@ const PlayerStats = ({ player }) => {
         }}
       >
         {/* batting */}
-        <div
-          style={{
-            height: "180px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "20px",
-            justifyContent: "center",
-            alignItems: "center",
-            position: "relative",
-          }}
-        >
+        {player?.playrole === "Wicketkeeper" ||
+        player?.playrole === "Batter" ||
+        player?.playrole === "Allrounder" ? (
           <div
             style={{
-              position: "absolute",
-              top: "0px",
-              left: "-15px",
-              height: "200px",
-              transform: "rotate(3deg)",
-            }}
-          >
-            <img
-              src="/images/BAT.png"
-              alt=""
-              style={{ height: "100%", width: "100%" }}
-            />
-          </div>
-          <div
-            className="bg-pink text-md upercase font-medium text-white"
-            style={{
-              height: " 40px",
-              width: "240px",
-
-              textAlign: "center",
-              borderRadius: "20px",
+              height: "180px",
               display: "flex",
+              flexDirection: "column",
+              gap: "20px",
               justifyContent: "center",
               alignItems: "center",
+              position: "relative",
             }}
           >
-            Batting Avg
-            <span className="pl-3">
-              {player?.stats?.Batting_Average?.toFixed(2) || "--"}{" "}
-            </span>
-          </div>
-          <div
-            className="bg-pink text-md upercase font-medium text-white"
-            style={{
-              height: " 40px",
-              width: "240px",
+            <div
+              style={{
+                position: "absolute",
+                top: "0px",
+                left: "-15px",
+                height: "200px",
+                transform: "rotate(3deg)",
+              }}
+            >
+              <img
+                src="/images/BAT.png"
+                alt=""
+                style={{ height: "100%", width: "100%" }}
+              />
+            </div>
+            <div
+              className="bg-pink text-md upercase font-medium text-white"
+              style={{
+                height: " 40px",
+                width: "240px",
 
-              textAlign: "center",
-              borderRadius: "20px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            Batting Runs
-            <span className="pl-3">
-              {player?.stats?.Runs?.toFixed(2) || "--"}{" "}
-            </span>
-          </div>
-          <div
-            className="bg-pink text-md upercase font-medium text-white"
-            style={{
-              height: " 40px",
-              width: "240px",
+                textAlign: "center",
+                borderRadius: "20px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              Batting Avg
+              <span className="pl-3">
+                {player?.stats?.Batting_Average?.toFixed(2) || "--"}{" "}
+              </span>
+            </div>
+            <div
+              className="bg-pink text-md upercase font-medium text-white"
+              style={{
+                height: " 40px",
+                width: "240px",
 
-              textAlign: "center",
-              borderRadius: "20px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            Batting SR
-            <span className="pl-3">
-              {player?.stats?.Batting_Strikerate?.toFixed(2) || "--"}{" "}
-            </span>
+                textAlign: "center",
+                borderRadius: "20px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              Batting Runs
+              <span className="pl-3">
+                {player?.stats?.Runs?.toFixed(2) || "--"}{" "}
+              </span>
+            </div>
+            <div
+              className="bg-pink text-md upercase font-medium text-white"
+              style={{
+                height: " 40px",
+                width: "240px",
+
+                textAlign: "center",
+                borderRadius: "20px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              Batting SR
+              <span className="pl-3">
+                {player?.stats?.Batting_Strikerate?.toFixed(2) || "--"}{" "}
+              </span>
+            </div>
           </div>
-        </div>
+        ) : null}
         {/* {bowling} */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "20px",
-            justifyContent: "center",
-            alignItems: "center",
-            position: "relative",
-            marginTop: "auto",
-          }}
-        >
+        {player?.playrole === "Bowler" || player?.playrole === "Allrounder" ? (
           <div
             style={{
-              position: "absolute",
-              top: "35px",
-              left: "-50px",
-              height: "150px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "20px",
+              justifyContent: "center",
+              alignItems: "center",
+              position: "relative",
+              marginTop: "auto",
             }}
           >
-            <img
-              src="/images/BALL2.png"
-              alt=""
-              style={{ height: "100%", width: "100%" }}
-            />
-          </div>
-          <div
-            className="bg-pink text-md upercase font-medium text-white"
-            style={{
-              height: " 40px",
-              width: "240px",
+            <div
+              style={{
+                position: "absolute",
+                top: "35px",
+                left: "-50px",
+                height: "150px",
+              }}
+            >
+              <img
+                src="/images/BALL2.png"
+                alt=""
+                style={{ height: "100%", width: "100%" }}
+              />
+            </div>
+            <div
+              className="bg-pink text-md upercase font-medium text-white"
+              style={{
+                height: " 40px",
+                width: "240px",
 
-              textAlign: "center",
-              borderRadius: "20px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            Bowling Avg
-            <span className="pl-3">
-              {player?.stats?.Bowling_Average?.toFixed(2) || "--"}{" "}
-            </span>
-          </div>
-          <div
-            className="bg-pink text-md upercase font-medium text-white"
-            style={{
-              height: "40px",
-              width: "300px",
+                textAlign: "center",
+                borderRadius: "20px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              Bowling Avg
+              <span className="pl-3">
+                {player?.stats?.Bowling_Average?.toFixed(2) || "--"}{" "}
+              </span>
+            </div>
+            <div
+              className="bg-pink text-md upercase font-medium text-white"
+              style={{
+                height: "40px",
+                width: "300px",
 
-              textAlign: "center",
-              borderRadius: "20px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              paddingLeft: "70px",
-            }}
-          >
-            Bowling Score
-            <span className="pl-3">
-              {player?.stats?.Bowling_Score?.toFixed(2) || "--"}{" "}
-            </span>
-          </div>
-          <div
-            className="bg-pink text-md upercase font-medium text-white"
-            style={{
-              height: " 40px",
-              width: "300px",
+                textAlign: "center",
+                borderRadius: "20px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                paddingLeft: "70px",
+              }}
+            >
+              Bowling Style
+              <span className="pl-3">{player?.stats?.Bowl_Style || "--"} </span>
+            </div>
+            <div
+              className="bg-pink text-md upercase font-medium text-white"
+              style={{
+                height: " 40px",
+                width: "300px",
 
-              textAlign: "center",
-              borderRadius: "20px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              paddingLeft: "60px",
-            }}
-          >
-            Bowling SR
-            <span className="pl-3">
-              {player?.stats?.Bowling_Strikerate?.toFixed(2) || "--"}{" "}
-            </span>
+                textAlign: "center",
+                borderRadius: "20px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                paddingLeft: "60px",
+              }}
+            >
+              Bowling SR
+              <span className="pl-3">
+                {player?.stats?.Bowling_Strikerate?.toFixed(2) || "--"}{" "}
+              </span>
+            </div>
+            <div
+              className="bg-pink text-md upercase font-medium text-white"
+              style={{
+                height: " 40px",
+                width: "240px",
+                textAlign: "center",
+                borderRadius: "20px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              Economy
+              <span className="pl-3">
+                {player?.stats?.Economy?.toFixed(2) || "--"}{" "}
+              </span>
+            </div>
           </div>
-          <div
-            className="bg-pink text-md upercase font-medium text-white"
-            style={{
-              height: " 40px",
-              width: "240px",
-              textAlign: "center",
-              borderRadius: "20px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            Economy
-            <span className="pl-3">
-              {player?.stats?.Economy?.toFixed(2) || "--"}{" "}
-            </span>
-          </div>
-        </div>
+        ) : null}
       </div>
     </div>
   );
