@@ -1,13 +1,15 @@
 import TeamHeader from "../../components/teamComparision/header";
 import TeamStat from "../../components/teamComparision/teamStat";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { opponentAnalysis } from "../../service/player";
 import { Loader } from "../../components";
 import { PITCH } from "../../constant";
 import { toast } from "react-toastify";
+import { setPlayerStats } from "../../redux/action/team";
 const TeamComparison = () => {
   const teamInfo = useSelector((state) => state.teamInfo);
+  const dispatch = useDispatch();
   const [format, setFormat] = useState(null);
   const [teamA, setTeamA] = useState(null);
   const [teamB, setTeamB] = useState(null);
@@ -130,6 +132,7 @@ const TeamComparison = () => {
           setstatsTeamA(res?.data?.stats);
           setstatsTeamB(res?.data?.statsb);
           setShow(false);
+          dispatch(setPlayerStats({ playerA: null, playerB: null }));
         } else {
           toast.error(res?.data?.message || "Failed to load the resources");
         }
