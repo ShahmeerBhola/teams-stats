@@ -19,6 +19,7 @@ const AnalysisModal = ({
   pitchHandler,
   typeHandler,
   submitHandler,
+  excludeTeam,
 }) => {
   const handleCancel = () => {
     setOpen(false);
@@ -35,7 +36,11 @@ const AnalysisModal = ({
         }}
       >
         <div className="">
-          <FlagSelect showModal="customSelect" changeHandler={onSelectTeam} />
+          <FlagSelect
+            showModal="customSelect"
+            changeHandler={onSelectTeam}
+            excludeTeam={excludeTeam}
+          />
         </div>
         {firstPage ? (
           <div>

@@ -13,7 +13,7 @@ const TeamHeader = ({
   limitHandler,
   pitchHandler,
   type,
-  typeHandler
+  typeHandler,
 }) => {
   return (
     <div className="flex gap-5">
@@ -24,6 +24,7 @@ const TeamHeader = ({
             showModal="firstHeader"
             dValue={teamA}
             changeHandler={teamAhandler}
+            excludeTeam={teamB}
           />
         </div>
       </div>
@@ -66,6 +67,7 @@ const TeamHeader = ({
             showModal="lastHeader"
             dValue={teamB}
             changeHandler={teamBhandler}
+            excludeTeam={teamA}
           />
         </div>
       </div>

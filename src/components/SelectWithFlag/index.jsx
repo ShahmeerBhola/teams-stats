@@ -3,11 +3,18 @@ import "./style.css";
 import { useEffect, useRef, useState } from "react";
 import { TEAM } from "../../constant";
 
-const FlagSelect = ({ showModal, bgColor, dValue, changeHandler }) => {
+const FlagSelect = ({
+  showModal,
+  bgColor,
+  dValue,
+  changeHandler,
+  excludeTeam,
+}) => {
   const [visible, setVisible] = useState(false);
   const selectRef = useRef(null);
-  const [value, setValue] = useState(dValue ?? TEAM[0]);
 
+  const AllTEAM = TEAM.filter(({ value }) => value !== excludeTeam);
+  const [value, setValue] = useState(dValue ?? AllTEAM[0]);
   const handleClick = () => {
     setVisible(!visible);
 
@@ -49,7 +56,8 @@ const FlagSelect = ({ showModal, bgColor, dValue, changeHandler }) => {
       <div className="h-16 w-40">
         <img
           src={
-            TEAM.find((item) => item.value === value)?.imgSrc ?? TEAM[0].imgSrc
+            TEAM.find((item) => item.value === value)?.imgSrc ??
+            AllTEAM[0].imgSrc
           }
           alt=""
           className="h-16 w-40  object-contain "
@@ -76,7 +84,7 @@ const FlagSelect = ({ showModal, bgColor, dValue, changeHandler }) => {
           bordered={false}
           onChange={(val) => onSelect(val)}
           onSelect={(val) => onSelect(val)}
-          options={TEAM}
+          options={AllTEAM}
           optionRender={CustomOption}
         />
       </div>

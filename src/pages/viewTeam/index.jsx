@@ -135,6 +135,7 @@ const ViewTeam = () => {
           open={openModal}
           setOpen={setOpenModal}
           onSelectTeam={onSelectTeam}
+          excludeTeam={teamName}
         />
 
         <div

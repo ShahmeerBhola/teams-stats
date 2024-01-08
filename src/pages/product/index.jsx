@@ -73,7 +73,7 @@ const Product = () => {
               Your Winning XI <br /> Unveiled!"
             </pre>
             <div
-              className="bg-pink text-lg font-medium uppercase w-40 rounded-3xl h-16 pt-3.5 px-3 text-center mt-10 cursor-pointer shadow-md hover:shadow-lg"
+              className="bg-pink text-lg font-medium uppercase w-40 rounded-3xl h-16 pt-4 px-3 text-center mt-10 cursor-pointer shadow-md hover:shadow-lg"
               onClick={() => setOpenModal(true)}
             >
               Let's Start
