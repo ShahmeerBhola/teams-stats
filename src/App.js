@@ -14,7 +14,7 @@ function App() {
       <BrowserRouter>
         <Routes />
       </BrowserRouter>
-      <ToastContainer autoClose={1500} />
+      <ToastContainer autoClose={false}  position="top-center" />
     </Provider>
   );
 }

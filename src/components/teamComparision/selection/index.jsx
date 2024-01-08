@@ -1,15 +1,24 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-
-const TeamStats = ({ stats }) => {
+import { TEAM } from "../../../constant";
+const TeamStats = ({ stats, team }) => {
   return (
     <div style={{ height: "100%", width: "100%" }}>
-      <div className="flex items-center justify-center text-xl font-bold pt-3 uppercase">
-        Team Stats
+      <div className="flex items-center justify-center text-3xl font-semibold pt-3 tracking-[.15em] uppercase ">
+        Team <span className="pl-5"> Stats </span>
+      </div>
+      <div className="flex items-center justify-center pt-2 ">
+        <img
+          src={
+            TEAM.find((item) => item.value === team)?.imgSrc ?? TEAM[0].imgSrc
+          }
+          alt=""
+          className="h-24 w-40  object-contain"
+        />
       </div>
       <div
         style={{
-          height: `calc(100% - 50px)`,
+          height: `calc(100% - 200px)`,
           display: "flex",
           justifyContent: "space-around",
           alignItems: "center",
@@ -205,17 +214,19 @@ const PlayerStats = ({ player }) => {
   console.log(player);
   return (
     <div style={{ height: "100%", width: "100%" }}>
-      <div className="flex items-center justify-center text-xl font-bold pt-3 uppercase">
-        Player Stats
+      <div className="flex items-center justify-center text-3xl font-semibold pt-3 tracking-[.15em] uppercase ">
+        Player <span className="pl-5"> Stats </span>
       </div>
-      <div className="flex h-32 p-5">
+      <div className="flex h-32 p-5 items-center justify-center  ">
         <div>
-          <img src={player?.img_url} className="h-24 w-24" />
+          <img src={player?.img_url} className="h-28 w-28" alt="" />
         </div>
-        <div className="flex flex-col items-start justify-center">
+        <div className="flex flex-col items-start justify-center pl-6">
           <div>
             <p>
-              <span className="text-md font-semibold">{player?.player}</span>
+              <span className="text-lg font-extrabold tracking-widest uppercase ">
+                {player?.player}
+              </span>
             </p>
           </div>
           <div>
@@ -223,6 +234,36 @@ const PlayerStats = ({ player }) => {
               <span className="text-md font-semibold">{player?.playrole}</span>
             </p>
           </div>
+
+          {player?.stats?.Bat_Style ? (
+            <div>
+              <p>
+                <span className="text-md font-semibold flex items-center">
+                  {player?.stats?.Bat_Style?.slice(0, -3)}
+                  <img
+                    src="/images/batsman2.png"
+                    alt=""
+                    className="h-4 w-4 ml-3"
+                  />
+                </span>
+              </p>
+            </div>
+          ) : null}
+          {player?.stats?.Bowl_Style ? (
+            <div>
+              <p>
+                <span className="text-md font-semibold flex items-center">
+                  {player?.stats?.Bowl_Style}
+                  <img
+                    src="/images/baller.png"
+                    alt=""
+                    className="h-4 w-4 ml-3"
+                  />
+                </span>
+              </p>
+            </div>
+          ) : null}
+          {/*  */}
         </div>
       </div>
       <div
@@ -381,8 +422,8 @@ const PlayerStats = ({ player }) => {
                 paddingLeft: "70px",
               }}
             >
-              Bowling Style
-              <span className="pl-3">{player?.stats?.Bowl_Style || "--"} </span>
+              Wickets
+              <span className="pl-3">{player?.stats?.Wickets || "--"} </span>
             </div>
             <div
               className="bg-pink text-md upercase font-medium text-white"
@@ -427,7 +468,7 @@ const PlayerStats = ({ player }) => {
   );
 };
 
-const Selection = ({ stats, statDirection }) => {
+const Selection = ({ stats, statDirection, team }) => {
   const teamInfo = useSelector((state) => state.teamStats);
   if (statDirection === "right") {
     return (
@@ -438,7 +479,7 @@ const Selection = ({ stats, statDirection }) => {
             statDirection={statDirection}
           />
         ) : (
-          <TeamStats stats={stats} />
+          <TeamStats stats={stats} team={team} />
         )}
       </>
     );
@@ -451,7 +492,7 @@ const Selection = ({ stats, statDirection }) => {
             statDirection={statDirection}
           />
         ) : (
-          <TeamStats stats={stats} />
+          <TeamStats stats={stats} team={team} />
         )}
       </>
     );

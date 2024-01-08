@@ -1,6 +1,6 @@
 import Selection from "../../components/teamComparision/selection";
 import { useDispatch, useSelector } from "react-redux";
-import { setPlayerStats, setTeamInfo } from "../../redux/action/team";
+import { setPlayerStats } from "../../redux/action/team";
 
 const AllPlayer = ({ team, statDirection }) => {
   const dispatch = useDispatch();
@@ -80,14 +80,14 @@ const SinglePlayerTile = ({ player, onClick, active }) => {
   );
 };
 
-const TeamStatViewer = ({ stats, statDirection }) => {
+const TeamStatViewer = ({ stats, statDirection , team }) => {
   return (
     <div className="bg-white h-[97%] my-3 ">
-      <Selection stats={stats} statDirection={statDirection} />
+      <Selection stats={stats} statDirection={statDirection} team={team} />
     </div>
   );
 };
-const TeamStat = ({ statDirection, team, stats }) => {
+const TeamStat = ({ statDirection, team, stats , teamName }) => {
   if (statDirection === "right") {
     return (
       <div className="flex gap-3">
@@ -95,7 +95,7 @@ const TeamStat = ({ statDirection, team, stats }) => {
           <AllPlayer team={team} statDirection={statDirection} />
         </div>
         <div className="flex-1">
-          <TeamStatViewer stats={stats} statDirection={statDirection} />
+          <TeamStatViewer stats={stats} statDirection={statDirection} team={teamName} />
         </div>
       </div>
     );
@@ -103,7 +103,7 @@ const TeamStat = ({ statDirection, team, stats }) => {
     return (
       <div className="flex gap-3">
         <div className="flex-1 ">
-          <TeamStatViewer stats={stats} statDirection={statDirection} />
+          <TeamStatViewer stats={stats} statDirection={statDirection} team={teamName} />
         </div>
         <div className="flex-1">
           <AllPlayer team={team} statDirection={statDirection} />

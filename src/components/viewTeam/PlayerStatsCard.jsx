@@ -23,7 +23,7 @@ const PlayerStatsCard = ({ name, playrole, imgSrc, stats, teamName }) => {
       <div className="absolute z-10 bg-transparent  bg-gradient-to-b from-transparent to-indigo-900  top-0 left-0 h-full w-full rounded-3xl">
         <div
           className={`flex flex-col items-center text-white ${
-            playrole === "Allrounder" ? "mt-[50%]" : "mt-[70%]"
+            playrole === "Allrounder" ? "mt-[60%]" : "mt-[70%]"
           } `}
         >
           <img
