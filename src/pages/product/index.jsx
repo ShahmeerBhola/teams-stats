@@ -18,7 +18,7 @@ const Product = () => {
   const [type, setType] = useState("balanced");
   const [limit, setLimit] = useState(10);
   const [format, setFormat] = useState("t20");
-  const [pitch, setPitch] = useState("spin");
+  const [pitch, setPitch] = useState("neutral");
   const [team, setTeam] = useState("Pakistan");
   const onSelectTeam = (teamA) => {
     setTeam(teamA);
