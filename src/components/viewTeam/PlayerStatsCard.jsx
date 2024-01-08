@@ -23,7 +23,7 @@ const PlayerStatsCard = ({ name, playrole, imgSrc, stats, teamName }) => {
       <div className="absolute z-10 bg-transparent  bg-gradient-to-b from-transparent to-indigo-900  top-0 left-0 h-full w-full rounded-3xl">
         <div
           className={`flex flex-col items-center text-white ${
-            playrole === "Allrounder" ? "mt-[60%]" : "mt-[70%]"
+            playrole === "Allrounder" ? "mt-[65%]" : "mt-[80%]"
           } `}
         >
           <img
@@ -31,10 +31,10 @@ const PlayerStatsCard = ({ name, playrole, imgSrc, stats, teamName }) => {
             alt=""
             className="h-6 w-6"
           />
-          <div className="font-black text-xl uppercase">
+          <div className="font-medium text-2xl uppercase">
             {name?.split(" ")[0]}{" "}
           </div>
-          <div className="text-4xl uppercase">{name?.split(" ")[1]}</div>
+          <div className="text-xl uppercase">{name?.split(" ")[1]}</div>
           <div className="flex items-center">
             <div className="border border-white w-20 h-0" />
             <div className="uppercase tracking-widest">{playrole}</div>
@@ -46,21 +46,19 @@ const PlayerStatsCard = ({ name, playrole, imgSrc, stats, teamName }) => {
             <div className="flex items-center justify-between gap-10 text-center w-full px-2">
               <div className="flex flex-col ">
                 <div className="text-xs">Bat Avg</div>
-                <div className="text-2xl font-medium">
+                <div className="text-xl font-light">
                   {stats?.Batting_Average?.toFixed(2) || "--"}
                 </div>
               </div>
               <div className="flex flex-col ">
                 <div className="text-xs">Bat SR</div>
-                <div className="text-2xl font-medium">
+                <div className="text-xl font-light">
                   {stats?.Batting_Strikerate?.toFixed(2) || "--"}
                 </div>
               </div>
               <div className="flex flex-col">
                 <div className="text-xs">Runs</div>
-                <div className="text-2xl font-medium">
-                  {stats?.Runs || "--"}
-                </div>
+                <div className="text-xl font-light">{stats?.Runs || "--"}</div>
               </div>
             </div>
           ) : null}
@@ -69,19 +67,19 @@ const PlayerStatsCard = ({ name, playrole, imgSrc, stats, teamName }) => {
             <div className="flex items-center justify-between gap-10 text-center w-full px-2">
               <div className="flex flex-col ">
                 <div className="text-xs">Bowl Avg</div>
-                <div className="text-2xl font-medium">
+                <div className="text-xl font-light">
                   {stats?.Bowling_Average?.toFixed(2) || "--"}
                 </div>
               </div>
               <div className="flex flex-col ">
                 <div className="text-xs">Bow SR</div>
-                <div className="text-2xl font-medium">
+                <div className="text-xl font-light">
                   {stats?.Bowling_Strikerate.toFixed(2) || "--"}
                 </div>
               </div>
               <div className="flex flex-col">
                 <div className="text-xs">Wickets</div>
-                <div className="text-2xl font-medium">
+                <div className="text-xl font-light">
                   {stats?.Wickets || "--"}
                 </div>
               </div>

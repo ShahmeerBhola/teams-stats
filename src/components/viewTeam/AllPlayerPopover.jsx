@@ -45,7 +45,7 @@ const PlayerTile = ({
 
   return (
     <div
-      className="relative cursor-wait"
+      className="relative "
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -62,7 +62,7 @@ const PlayerTile = ({
           />
         </div>
         <div
-          className={`bg-[#E1486D] px-4 py-2 text-center  mt-[70px] mr-2  animate  rounded-3xl text-white absolute`}
+          className={`bg-[#E1486D] px-4 py-2 text-center  mt-[70px] mr-2  animate  rounded-3xl text-white absolute uppercase font-medium `}
         >
           {name?.split(" ")[0] ?? `Babar`}
         </div>

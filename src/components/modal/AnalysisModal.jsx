@@ -83,10 +83,10 @@ const AnalysisModal = ({
             </div>
             <div className="w-full flex">
               <button
-                className="bg-purple text-lg font-semibold uppercase w-36 rounded-3xl h-16 pt-1 px-5 text-center mt-10 cursor-pointer text-white mx-auto"
+                className="bg-purple text-lg font-semibold uppercase w-36 rounded-3xl h-16 pt-1 px-5 text-center mt-10 cursor-pointer text-white mx-auto shadow-md hover:shadow-xl"
                 onClick={submitHandler}
               >
-                Submit
+                Generate
               </button>
             </div>
           </div>

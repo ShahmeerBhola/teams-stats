@@ -40,7 +40,7 @@ const TeamStats = ({ stats, team }) => {
           <div
             style={{
               position: "absolute",
-              top: "55px",
+              top: "35px",
               left: "-15px",
               height: "200px",
               transform: "rotate(3deg)",
@@ -65,9 +65,9 @@ const TeamStats = ({ stats, team }) => {
               alignItems: "center",
             }}
           >
-            Batting Avg
+            Batting Score
             <span className="pl-3">
-              {stats?.Batting_Average?.toFixed(2) || "--"}{" "}
+              {stats?.Batting_Score?.toFixed(2) || "--"}{" "}
             </span>
           </div>
           <div
@@ -83,11 +83,12 @@ const TeamStats = ({ stats, team }) => {
               alignItems: "center",
             }}
           >
-            Batting Score
+            Batting Avg
             <span className="pl-3">
-              {stats?.Batting_Score?.toFixed(2) || "--"}{" "}
+              {stats?.Batting_Average?.toFixed(2) || "--"}{" "}
             </span>
           </div>
+
           <div
             className="bg-pink text-md upercase font-medium text-white"
             style={{
@@ -145,9 +146,9 @@ const TeamStats = ({ stats, team }) => {
               alignItems: "center",
             }}
           >
-            Bowling Avg
+            Bowling Score
             <span className="pl-3">
-              {stats?.Bowling_Average?.toFixed(2) || "--"}{" "}
+              {stats?.Bowling_Score?.toFixed(2) || "--"}{" "}
             </span>
           </div>
           <div
@@ -164,9 +165,9 @@ const TeamStats = ({ stats, team }) => {
               paddingLeft: "70px",
             }}
           >
-            Bowling Score
+            Bowling Avg
             <span className="pl-3">
-              {stats?.Bowling_Score?.toFixed(2) || "--"}{" "}
+              {stats?.Bowling_Average?.toFixed(2) || "--"}{" "}
             </span>
           </div>
           <div
@@ -307,24 +308,7 @@ const PlayerStats = ({ player }) => {
                 style={{ height: "100%", width: "100%" }}
               />
             </div>
-            <div
-              className="bg-pink text-md upercase font-medium text-white"
-              style={{
-                height: " 40px",
-                width: "240px",
 
-                textAlign: "center",
-                borderRadius: "20px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              Batting Avg
-              <span className="pl-3">
-                {player?.stats?.Batting_Average?.toFixed(2) || "--"}{" "}
-              </span>
-            </div>
             <div
               className="bg-pink text-md upercase font-medium text-white"
               style={{
@@ -341,6 +325,24 @@ const PlayerStats = ({ player }) => {
               Batting Runs
               <span className="pl-3">
                 {player?.stats?.Runs?.toFixed(2) || "--"}{" "}
+              </span>
+            </div>
+            <div
+              className="bg-pink text-md upercase font-medium text-white"
+              style={{
+                height: " 40px",
+                width: "240px",
+
+                textAlign: "center",
+                borderRadius: "20px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              Batting Avg
+              <span className="pl-3">
+                {player?.stats?.Batting_Average?.toFixed(2) || "--"}{" "}
               </span>
             </div>
             <div
@@ -403,10 +405,8 @@ const PlayerStats = ({ player }) => {
                 alignItems: "center",
               }}
             >
-              Bowling Avg
-              <span className="pl-3">
-                {player?.stats?.Bowling_Average?.toFixed(2) || "--"}{" "}
-              </span>
+              Wickets
+              <span className="pl-3">{player?.stats?.Wickets || "--"}</span>
             </div>
             <div
               className="bg-pink text-md upercase font-medium text-white"
@@ -422,8 +422,10 @@ const PlayerStats = ({ player }) => {
                 paddingLeft: "70px",
               }}
             >
-              Wickets
-              <span className="pl-3">{player?.stats?.Wickets || "--"} </span>
+              Bowling Avg
+              <span className="pl-3">
+                {player?.stats?.Bowling_Average?.toFixed(2) || "--"}{" "}
+              </span>
             </div>
             <div
               className="bg-pink text-md upercase font-medium text-white"
