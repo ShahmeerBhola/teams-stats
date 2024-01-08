@@ -16,7 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { FORMAT, LIMIT, PITCH, TYPE } from "../../constant";
 const ViewTeam = () => {
   const navigate = useNavigate();
-  const [currentTeamName, setCurrenteamname] = useState("Pakistan");
+  const [currentTeamName, setCurrenteamname] = useState("");
   const [team, setTeam] = useState([]);
   const [teamStats, setTeamStats] = useState(null);
   const [teamName, setTeamName] = useState(null);
@@ -38,6 +38,7 @@ const ViewTeam = () => {
 
   const firstFetch = (team, format, lastMatches, pitch, type) => {
     setLoading(true);
+    // if (team?.length) return;
     generateTeam({
       team,
       format,
@@ -49,7 +50,7 @@ const ViewTeam = () => {
         if (res?.data?.success) {
           setTeamStats(res?.data?.stats);
           setTeam(res?.data?.team);
-          setCurrenteamname(teamName);
+          setCurrenteamname(team);
         } else {
           toast.error(res?.data?.message || "Failed to load the resources");
           // navigate("/");
@@ -95,7 +96,6 @@ const ViewTeam = () => {
     );
     navigate("/comparison");
   };
-
 
   useEffect(() => {
     if (
@@ -150,7 +150,11 @@ const ViewTeam = () => {
           <div className="w-1/4 ">
             <div className="flex pt-3 gap-4 ">
               <div className="relative left-[-45px] w-full">
-                <FlagSelect showModal='singleTeam' dValue={teamName} changeHandler={setTeamA} />
+                <FlagSelect
+                  showModal="singleTeam"
+                  dValue={teamName}
+                  changeHandler={setTeamA}
+                />
               </div>
             </div>
 
