@@ -37,7 +37,6 @@ const ViewTeam = () => {
     backgroundSize: "cover",
   };
 
-
   const fetchData = (firstFetch = false) => {
     if (firstFetch) {
       setFirstFetch(false);
@@ -178,7 +177,7 @@ const ViewTeam = () => {
               </div>
             </div>
             <div className="relative left-[-45px]">
-              <div className="flex gap-4 pt-7  w-[65%] mx-auto">
+              <div className="flex gap-4 pt-3  w-[65%] mx-auto">
                 <div className="flex-1">
                   <StatShowTile
                     title="Batting Avg"
@@ -228,7 +227,7 @@ const ViewTeam = () => {
                 </div>
               </div>
             </div>
-            <div className="flex gap-[50px] pt-4 relative left-2">
+            <div className="flex gap-[50px] pt-4 relative left-[-25px]">
               <div>
                 <FilledButton
                   text="Opponent"

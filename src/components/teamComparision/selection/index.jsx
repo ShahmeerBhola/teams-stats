@@ -18,7 +18,7 @@ const TeamStats = ({ stats, team }) => {
       </div>
       <div
         style={{
-          height: `calc(100% - 200px)`,
+          height: `calc(100% - 190px)`,
           display: "flex",
           justifyContent: "space-around",
           alignItems: "center",
@@ -28,7 +28,7 @@ const TeamStats = ({ stats, team }) => {
         {/* batting */}
         <div
           style={{
-            height: "315px",
+            height: "270px",
             display: "flex",
             flexDirection: "column",
             gap: "20px",
@@ -40,9 +40,9 @@ const TeamStats = ({ stats, team }) => {
           <div
             style={{
               position: "absolute",
-              top: "35px",
+              top: "30px",
               left: "-15px",
-              height: "200px",
+              height: "180px",
               transform: "rotate(3deg)",
             }}
           >
@@ -55,7 +55,7 @@ const TeamStats = ({ stats, team }) => {
           <div
             className="bg-pink text-md upercase font-medium text-white"
             style={{
-              height: " 40px",
+              height: " 35px",
               width: "240px",
 
               textAlign: "center",
@@ -73,7 +73,7 @@ const TeamStats = ({ stats, team }) => {
           <div
             className="bg-pink text-md upercase font-medium text-white"
             style={{
-              height: " 40px",
+              height: " 35px",
               width: "240px",
 
               textAlign: "center",
@@ -92,7 +92,7 @@ const TeamStats = ({ stats, team }) => {
           <div
             className="bg-pink text-md upercase font-medium text-white"
             style={{
-              height: " 40px",
+              height: " 35px",
               width: "240px",
 
               textAlign: "center",
@@ -123,8 +123,8 @@ const TeamStats = ({ stats, team }) => {
             style={{
               position: "absolute",
               top: "35px",
-              left: "-50px",
-              height: "150px",
+              left: "-40px",
+              height: "140px",
             }}
           >
             <img
@@ -136,7 +136,7 @@ const TeamStats = ({ stats, team }) => {
           <div
             className="bg-pink text-md upercase font-medium text-white"
             style={{
-              height: " 40px",
+              height: " 35px",
               width: "240px",
 
               textAlign: "center",
@@ -154,7 +154,7 @@ const TeamStats = ({ stats, team }) => {
           <div
             className="bg-pink text-md upercase font-medium text-white"
             style={{
-              height: "40px",
+              height: "35px",
               width: "300px",
 
               textAlign: "center",
@@ -173,7 +173,7 @@ const TeamStats = ({ stats, team }) => {
           <div
             className="bg-pink text-md upercase font-medium text-white"
             style={{
-              height: " 40px",
+              height: " 35px",
               width: "300px",
 
               textAlign: "center",
@@ -192,7 +192,7 @@ const TeamStats = ({ stats, team }) => {
           <div
             className="bg-pink text-md upercase font-medium text-white"
             style={{
-              height: " 40px",
+              height: " 35px",
               width: "240px",
 
               textAlign: "center",
@@ -214,7 +214,7 @@ const TeamStats = ({ stats, team }) => {
 const PlayerStats = ({ player }) => {
   console.log(player);
   return (
-    <div style={{ height: "100%", width: "100%" }}>
+    <div className="h-full w-full">
       <div className="flex items-center justify-center text-3xl font-semibold pt-3 tracking-[.15em] uppercase ">
         Player <span className="pl-5"> Stats </span>
       </div>
@@ -270,7 +270,7 @@ const PlayerStats = ({ player }) => {
       <div
         style={{
           height:
-            player?.playrole === "Allrounder" ? `calc(100% - 200px)` : "auto",
+            player?.playrole === "Allrounder" ? `calc(100% - 190px)` : "auto",
           display: "flex",
           alignItems: "center",
           flexDirection: "column",
@@ -298,7 +298,7 @@ const PlayerStats = ({ player }) => {
                 position: "absolute",
                 top: "0px",
                 left: "-15px",
-                height: "200px",
+                height: "180px",
                 transform: "rotate(3deg)",
               }}
             >
@@ -312,7 +312,7 @@ const PlayerStats = ({ player }) => {
             <div
               className="bg-pink text-md upercase font-medium text-white"
               style={{
-                height: " 40px",
+                height: " 35px",
                 width: "240px",
 
                 textAlign: "center",
@@ -330,7 +330,7 @@ const PlayerStats = ({ player }) => {
             <div
               className="bg-pink text-md upercase font-medium text-white"
               style={{
-                height: " 40px",
+                height: " 35px",
                 width: "240px",
 
                 textAlign: "center",
@@ -348,7 +348,7 @@ const PlayerStats = ({ player }) => {
             <div
               className="bg-pink text-md upercase font-medium text-white"
               style={{
-                height: " 40px",
+                height: " 35px",
                 width: "240px",
 
                 textAlign: "center",
@@ -382,8 +382,8 @@ const PlayerStats = ({ player }) => {
               style={{
                 position: "absolute",
                 top: "35px",
-                left: "-50px",
-                height: "150px",
+                left: "-40px",
+                height: "140px",
               }}
             >
               <img
@@ -395,7 +395,7 @@ const PlayerStats = ({ player }) => {
             <div
               className="bg-pink text-md upercase font-medium text-white"
               style={{
-                height: " 40px",
+                height: " 35px",
                 width: "240px",
 
                 textAlign: "center",
@@ -411,7 +411,7 @@ const PlayerStats = ({ player }) => {
             <div
               className="bg-pink text-md upercase font-medium text-white"
               style={{
-                height: "40px",
+                height: "35px",
                 width: "300px",
 
                 textAlign: "center",
@@ -430,7 +430,7 @@ const PlayerStats = ({ player }) => {
             <div
               className="bg-pink text-md upercase font-medium text-white"
               style={{
-                height: " 40px",
+                height: " 35px",
                 width: "300px",
 
                 textAlign: "center",
@@ -449,7 +449,7 @@ const PlayerStats = ({ player }) => {
             <div
               className="bg-pink text-md upercase font-medium text-white"
               style={{
-                height: " 40px",
+                height: " 35px",
                 width: "240px",
                 textAlign: "center",
                 borderRadius: "20px",

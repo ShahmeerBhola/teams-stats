@@ -28,7 +28,7 @@ const TeamHeader = ({
           />
         </div>
       </div>
-      <div className="flex-1">
+      <div className="flex-1 pt-2">
         <div className="flex gap-3 mx-auto items-center justify-center">
           <div>
             <FormatDropdown

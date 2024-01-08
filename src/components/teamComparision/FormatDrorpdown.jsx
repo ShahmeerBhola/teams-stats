@@ -21,7 +21,7 @@ const FormatDropdown = ({
           background: "#E1486D",
           color: "#fff",
           width: classCss ? "220px" : "100%",
-          height: classCss ? "60px" : "50px",
+          height: classCss ? "60px" : "40px",
         }}
         value={value ?? options?.[0]}
         options={options}

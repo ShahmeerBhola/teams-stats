@@ -9,16 +9,18 @@
 }
 .customSelect {
   width: 432px !important;
-  inset: 231px auto auto 635px !important;
+  inset: 231px auto auto 550px !important;
 }
 .firstHeader {
-  inset: 90px auto auto 25px !important;
+  width: 320px  !important;
+  inset: 90px auto auto 10px !important;
 }
 .singleTeam {
-  width: 400px !important;
+  width: 350px !important;
   inset: 80px 60px auto auto !important;
 }
 .lastHeader {
+  width: 310px !important;
   inset: 90px 15px auto auto !important;
 }
 

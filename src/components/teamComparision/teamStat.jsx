@@ -45,7 +45,7 @@ const AllPlayer = ({ team, statDirection }) => {
 const SinglePlayerTile = ({ player, onClick, active }) => {
   return (
     <div
-      className={`flex h-[55px] bg-white rounded-3xl items-center m-2 ${
+      className={`flex h-[49px] bg-white rounded-3xl items-center m-2 ${
         active ? "!bg-pink  text-white" : ""
       } cursor-pointer`}
       onClick={onClick}
@@ -82,7 +82,7 @@ const SinglePlayerTile = ({ player, onClick, active }) => {
 
 const TeamStatViewer = ({ stats, statDirection, team }) => {
   return (
-    <div className="bg-white h-[97%] my-3 ">
+    <div className="bg-white h-[95%] my-3 ">
       <Selection stats={stats} statDirection={statDirection} team={team} />
     </div>
   );

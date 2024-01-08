@@ -49,8 +49,14 @@ const PlayerTile = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
+      {/* absolute !top-[${+top}px] !left-[${+left}px]  */}
       <div
-        className={`absolute top-[${+top}px] left-[${+left}px] flex  flex-col items-center `}
+        style={{
+          position: "absolute",
+          top: `${+top}px`,
+          left: `${+left}px`
+        }}
+        className={`flex  flex-col items-center `}
       >
         <div
           className={`myDiv bg-white rounded-full p-2 w-16 text-center animate `}
@@ -99,8 +105,8 @@ const PlayerTileParent = ({ team, teamName }) => {
   const keeperStyle = {
     role: "wicketKeeper",
     style: "top-[210px] left-[530px]",
-    top: 210,
-    left: 530,
+    top: 180,
+    left: 480,
   };
   return (
     <>
