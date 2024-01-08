@@ -80,14 +80,14 @@ const SinglePlayerTile = ({ player, onClick, active }) => {
   );
 };
 
-const TeamStatViewer = ({ stats, statDirection , team }) => {
+const TeamStatViewer = ({ stats, statDirection, team }) => {
   return (
     <div className="bg-white h-[97%] my-3 ">
       <Selection stats={stats} statDirection={statDirection} team={team} />
     </div>
   );
 };
-const TeamStat = ({ statDirection, team, stats , teamName }) => {
+const TeamStat = ({ statDirection, team, stats, teamName }) => {
   if (statDirection === "right") {
     return (
       <div className="flex gap-3">
@@ -95,7 +95,13 @@ const TeamStat = ({ statDirection, team, stats , teamName }) => {
           <AllPlayer team={team} statDirection={statDirection} />
         </div>
         <div className="flex-1">
-          <TeamStatViewer stats={stats} statDirection={statDirection} team={teamName} />
+          {stats ? (
+            <TeamStatViewer
+              stats={stats}
+              statDirection={statDirection}
+              team={teamName}
+            />
+          ) : null}
         </div>
       </div>
     );
@@ -103,7 +109,13 @@ const TeamStat = ({ statDirection, team, stats , teamName }) => {
     return (
       <div className="flex gap-3">
         <div className="flex-1 ">
-          <TeamStatViewer stats={stats} statDirection={statDirection} team={teamName} />
+          {stats ? (
+            <TeamStatViewer
+              stats={stats}
+              statDirection={statDirection}
+              team={teamName}
+            />
+          ) : null}
         </div>
         <div className="flex-1">
           <AllPlayer team={team} statDirection={statDirection} />

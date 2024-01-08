@@ -150,7 +150,7 @@ const TeamComparison = () => {
             />
           </div>
           <div className="">
-            <div className="bg-white border-2 h-full" />
+            {statsTeamA ? <div className="bg-white border-2 h-full" /> : null}
           </div>
           <div className="flex-1">
             <TeamStat team={playerTeamB} stats={statsTeamB} teamName={teamB} />
