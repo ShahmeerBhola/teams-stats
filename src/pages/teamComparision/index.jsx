@@ -7,6 +7,7 @@ import { Loader } from "../../components";
 import { PITCH } from "../../constant";
 import { toast } from "react-toastify";
 import { setPlayerStats } from "../../redux/action/team";
+
 const TeamComparison = () => {
   const teamInfo = useSelector((state) => state.teamInfo);
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const TeamComparison = () => {
   const [limit, setLimit] = useState(null);
   const [pitch, setPitch] = useState(null);
   const [type, setType] = useState(null);
+  const [firstFetch, setFirstFetch] = useState(true);
   const checkShow = () => {
     if (
       teamInfo?.teamA !== teamA ||
@@ -61,14 +63,6 @@ const TeamComparison = () => {
       setLimit(teamInfo?.limit);
       setPitch(teamInfo?.pitch);
       setType(teamInfo?.type);
-      firstFetch(
-        teamInfo?.teamA,
-        teamInfo?.teamB,
-        teamInfo?.format,
-        teamInfo?.limit,
-        teamInfo?.pitch,
-        teamInfo?.type
-      );
     }
   }, [teamInfo]);
 
@@ -76,46 +70,15 @@ const TeamComparison = () => {
     if (teamInfo?.teamA) {
       checkShow();
     }
+    if (teamA && teamB && format && pitch && limit && type && firstFetch) {
+      fetchData(true);
+    }
   }, [teamA, teamB, format, pitch, limit, type]);
 
-  const firstFetch = (teamA, teamB, format, limit, pitch, type) => {
-    console.log({
-      team: teamA,
-      opponent: teamB,
-      format,
-      type,
-      lastMatches: limit,
-      pitch,
-    });
-    setLoading(true);
-    // opponentAnalysis
-    opponentAnalysis({
-      team: teamA,
-      opponent: teamB,
-      format,
-      type: "balanced",
-      lastMatches: limit,
-      pitch,
-    })
-      .then((res) => {
-        if (res?.data?.success) {
-          setPlayerTeamA(res?.data?.team);
-          setPlayerTeamB(res?.data?.teamb);
-          setstatsTeamA(res?.data?.stats);
-          setstatsTeamB(res?.data?.statsb);
-        } else {
-          toast.error(res?.data?.message || "Failed to load the resources");
-        }
-      })
-      .catch((err) => {
-        console.log("errr", err);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
-
-  const fetchData = () => {
+  const fetchData = (firstFetch = false) => {
+    if (firstFetch) {
+      setFirstFetch(false);
+    }
     setLoading(true);
     opponentAnalysis({
       team: teamA,

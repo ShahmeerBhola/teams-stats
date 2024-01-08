@@ -27,6 +27,7 @@ const ViewTeam = () => {
   const [limit, setLimit] = useState(null);
   const [pitch, setPitch] = useState(null);
   const [type, setType] = useState(null);
+  const [firstFetch, setFirstFetch] = useState(true);
   const teamInfo = useSelector((state) => state.teamInfo);
   const dispatch = useDispatch();
   const styles = {
@@ -36,34 +37,11 @@ const ViewTeam = () => {
     backgroundSize: "cover",
   };
 
-  const firstFetch = (team1, format, lastMatches, pitch, type) => {
-    setLoading(true);
-    generateTeam({
-      team: team1,
-      format,
-      lastMatches,
-      type,
-      pitch,
-    })
-      .then((res) => {
-        if (res?.data?.success) {
-          setTeamStats(res?.data?.stats);
-          setTeam(res?.data?.team);
-          setCurrenteamname(team);
-        } else {
-          toast.error(res?.data?.message || "Failed to load the resources");
-          navigate("/");
-        }
-      })
-      .catch((err) => {
-        console.log({ err });
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
 
-  const fetchData = () => {
+  const fetchData = (firstFetch = false) => {
+    if (firstFetch) {
+      setFirstFetch(false);
+    }
     setLoading(true);
     generateTeam({
       team: teamName,
@@ -79,7 +57,9 @@ const ViewTeam = () => {
           setCurrenteamname(teamName);
         } else {
           toast.error(res?.data?.message || "Failed to load the resources");
-          // navigate("/");
+          if (firstFetch) {
+            navigate("/");
+          }
         }
       })
       .catch((err) => {
@@ -109,15 +89,14 @@ const ViewTeam = () => {
       setLimit(teamInfo?.limit);
       setPitch(teamInfo?.pitch);
       setType(teamInfo?.type);
-      firstFetch(
-        teamInfo?.teamA,
-        teamInfo?.format,
-        teamInfo?.limit,
-        teamInfo?.pitch,
-        teamInfo?.type
-      );
     }
   }, [teamInfo]);
+
+  useEffect(() => {
+    if (teamName && firstFetch) {
+      fetchData(firstFetch);
+    }
+  }, [teamName, format, limit, pitch, type]);
 
   const setTeamA = (val) => {
     setTeamName(val);
