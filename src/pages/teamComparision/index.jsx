@@ -183,13 +183,14 @@ const TeamComparison = () => {
               statDirection="right"
               team={playerTeamA}
               stats={statsTeamA}
+              teamName={teamA}
             />
           </div>
           <div className="">
             <div className="bg-white border-2 h-full" />
           </div>
           <div className="flex-1">
-            <TeamStat team={playerTeamB} stats={statsTeamB} />
+            <TeamStat team={playerTeamB} stats={statsTeamB} teamName={teamB} />
           </div>
         </div>
 

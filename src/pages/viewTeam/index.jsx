@@ -36,11 +36,10 @@ const ViewTeam = () => {
     backgroundSize: "cover",
   };
 
-  const firstFetch = (team, format, lastMatches, pitch, type) => {
+  const firstFetch = (team1, format, lastMatches, pitch, type) => {
     setLoading(true);
-    // if (team?.length) return;
     generateTeam({
-      team,
+      team: team1,
       format,
       lastMatches,
       type,
@@ -53,7 +52,7 @@ const ViewTeam = () => {
           setCurrenteamname(team);
         } else {
           toast.error(res?.data?.message || "Failed to load the resources");
-          // navigate("/");
+          navigate("/");
         }
       })
       .catch((err) => {
