@@ -214,7 +214,7 @@ const TeamStats = ({ stats, team }) => {
 const PlayerStats = ({ player }) => {
   console.log(player);
   return (
-    <div className="h-full w-full">
+    <div className="bg-white" style={{ height: "101%", width: "100%" }}>
       <div className="flex items-center justify-center text-3xl font-semibold pt-3 tracking-[.15em] uppercase ">
         Player <span className="pl-5"> Stats </span>
       </div>
@@ -276,6 +276,7 @@ const PlayerStats = ({ player }) => {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "10px 0",
+          // padding: "17px 0",
         }}
       >
         {/* batting */}
@@ -284,7 +285,7 @@ const PlayerStats = ({ player }) => {
         player?.playrole === "Allrounder" ? (
           <div
             style={{
-              height: "180px",
+              height: "190px",
               display: "flex",
               flexDirection: "column",
               gap: "20px",
@@ -376,6 +377,7 @@ const PlayerStats = ({ player }) => {
               alignItems: "center",
               position: "relative",
               marginTop: "auto",
+              // paddingTop:'30px'
             }}
           >
             <div
