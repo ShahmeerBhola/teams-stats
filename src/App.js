@@ -5,7 +5,7 @@ import store from "./store";
 import { Provider } from "react-redux";
 import Axios from "axios";
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 Axios.defaults.baseURL = process.env.REACT_APP_API_KEY;
 function App() {
@@ -14,7 +14,7 @@ function App() {
       <BrowserRouter>
         <Routes />
       </BrowserRouter>
-      <ToastContainer autoClose={false}  position="top-center" />
+      <ToastContainer autoClose={8000} position="top-center" />
     </Provider>
   );
 }

@@ -87,8 +87,8 @@ export const PITCH = [
     label: "Neutral",
     value: "neutral",
   },
-  { label: "Grassy", value: "spin" },
-  { label: "Bouncy", value: "fast" },
+  { label: "Dusty", value: "spin" },
+  { label: "Green", value: "fast" },
 ];
 
 export const TYPE = [

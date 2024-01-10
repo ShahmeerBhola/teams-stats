@@ -121,8 +121,8 @@ const TeamComparison = () => {
     return <Loader />;
   } else {
     return (
-      <div className="bg-[#35336E]  h-screen">
-        <div className="pt-4">
+      <div className="bg-[#35336E] h-screen overflow-hidden ">
+        <div className="pt-2">
           <TeamHeader
             formatValue={format}
             formatHandler={formatHandler}
