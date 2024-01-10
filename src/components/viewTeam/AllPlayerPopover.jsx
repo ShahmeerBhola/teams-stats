@@ -54,17 +54,18 @@ const PlayerTile = ({
         style={{
           position: "absolute",
           top: `${+top}px`,
-          left: `${+left}px`
+          left: `${+left}px`,
         }}
         className={`flex  flex-col items-center `}
       >
         <div
-          className={`myDiv bg-white rounded-full p-2 w-16 text-center animate `}
+          className={`myDiv bg-white rounded-full p-2 w-16 text-center animate overflow-hidden`}
         >
           <img
-            src={imgSrc ?? "/images/babar.webp"}
+            src={imgSrc ?? "/images/person.png"}
             alt=""
             className="h-12 w-12 text-center"
+            onerror="this.onerror=null;this.src='/images/person.png';"
           />
         </div>
         <div
@@ -95,6 +96,24 @@ const PlayerTile = ({
 };
 
 const PlayerTileParent = ({ team, teamName }) => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowHeight, setsetWindowHight] = useState(window.innerHeight);
+
+  const updateWindowWidth = () => {
+    setWindowWidth(window.innerWidth);
+    setsetWindowHight(window.innerHeight);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", updateWindowWidth);
+
+    return () => {
+      window.removeEventListener("resize", updateWindowWidth);
+    };
+  }, []); // Empty dependency array means this effect runs once on mount
+
+  const adjustedWidth = (windowWidth - 1536) * 0.3;
+  const adjustedHeight = (windowHeight - 724) * 0.5;
   const wicketkeeper = team.filter(
     (player) => player.playrole === "Wicketkeeper"
   );
@@ -112,8 +131,8 @@ const PlayerTileParent = ({ team, teamName }) => {
     <>
       {positionStyle.map((item, key) => (
         <PlayerTile
-          top={item.top}
-          left={item.left}
+          top={item.top + adjustedHeight}
+          left={item.left + adjustedWidth}
           key={key}
           imgSrc={filteredPlayers?.[key]?.img_url}
           name={filteredPlayers?.[key]?.player}
@@ -124,8 +143,8 @@ const PlayerTileParent = ({ team, teamName }) => {
       ))}
       {wicketkeeper?.map((item, key) => (
         <PlayerTile
-          top={keeperStyle.top}
-          left={keeperStyle.left}
+          top={keeperStyle.top + adjustedHeight}
+          left={keeperStyle.left + adjustedWidth}
           key={key + keeperStyle.top}
           imgSrc={item.img_url}
           name={item.player}

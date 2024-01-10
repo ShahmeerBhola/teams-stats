@@ -51,7 +51,8 @@ const SinglePlayerTile = ({ player, onClick, active }) => {
       onClick={onClick}
     >
       <img
-        src={player?.img_url || "/images/babar.webp"}
+        src={player?.img_url || "/images/person.png"}
+        onerror="this.onerror=null;this.src='/images/person.png';"
         alt=""
         className="h-10 w-10 p-1 ml-4"
       />
